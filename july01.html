@@ -1,10 +1,59 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>你好，GitHub</title>
-  </head>
-  <body>
-    <h1>覺得厲害</h1>
-  </body>
+	<head>
+		<meta charset="utf-8">
+	    <title>七月一日單字測驗</title>
+	</head>
+	
+	<body>
+		<h3>給定對應的中文，請輸入英文</h3><br>
+		<script>
+			
+			var id;
+			var correct=[];
+			var ansl=["achiever","affordable","explorer","decease","emotionalism",
+					"fashionable","jeopardize","background","fascinate","adverse"];
+
+			function check(){
+				var score=0;
+				for(var i=0;i<10;++i){
+					var id="ans"+(i+1);
+					var x=document.getElementById(id).value;
+					if(ansl[i]==x)++score,correct[i]=1;
+					else correct[i]=0;
+				}
+				var out="scroe:"+score*10+"/100\n";
+				for(var i=0;i<10;++i){
+					out+=(i+1)+":";
+					if(correct[i])out+="correct";
+					else out+="incorrect,the answer is:"+ansl[i];
+					out+="\n";
+				}
+				alert(out);
+			}
+		</script>
+
+		1.名詞_成就，成功(a_____r)<br>
+		<input type="text" input id="ans1"><br><br>
+		2.形容詞_可負擔的(a_____e)<br>
+		<input type="text" input id="ans2"><br><br>
+		3.名詞_勘探者(e_____r)<br>
+		<input type="text" input id="ans3"><br><br>
+		4.動詞_死亡，終止(d_____e)<br>
+		<input type="text" input id="ans4"><br><br>
+		5.名詞_多愁善感(e_____m)<br>
+		<input type="text" input id="ans5"><br><br>
+		6.形容詞_時尚的(f_____e)<br>
+		<input type="text" input id="ans6"><br><br>
+		7.動詞_危急，損害(j_____e)<br>
+		<input type="text" input id="ans7"><br><br>
+		8.名詞_背景(b_____d)<br>
+		<input type="text" input id="ans8"><br><br>
+		9.動詞_吸引，迷住(f_____e)<br>
+		<input type="text" input id="ans9"><br><br>
+		10.形容詞_不利的(a_____e)<br>
+		<input type="text" input id="ans10"><br><br>
+		<button name="submit" onClick="check()">Submit</button>
+		
+	</body>
 </html>
