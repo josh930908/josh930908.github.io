@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	    <meta charset="utf-8">
-	    <title>七月二日單字測驗</title>
+		<meta charset="utf-8">
+	    <title>七月一日單字測驗</title>
 	</head>
 	
 	<body>
@@ -24,14 +24,18 @@
 					if(ansl[i]==x)++score,correct[i]=1;
 					else correct[i]=0;
 				}
-				var out="scroe:"+score*10+"/100\n";
+				var out="scroe:"+score*10+"/100<br>";
 				for(var i=0;i<10;++i){
-					out+=(i+1)+":";
-					if(correct[i])out+="correct";
+					if(i!=9)out+="0";
+						out+=(i+1)+":";
+					
+						if(correct[i])out+="correct";
 					else out+="incorrect,the answer is:"+ansl[i];
-					out+="\n";
+					out+="<br>";
 				}
-				alert(out);
+				out+='<a href="https://josh930908.github.io/july02.html">back</a>';
+			//	alert(out);
+			document.write(out);
 			}
 		</script>
 
