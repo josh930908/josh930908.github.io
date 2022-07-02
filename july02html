@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <title>七月一日單字測驗</title>
+	</head>
+	
+	<body>
+		<article>
+		<h3>給定對應的中文，請輸入英文</h3><br>
+		<script>
+			
+			var id;
+			var correct=[];
+
+			var ansl=["tendency","goods","performance","major","information",
+					"execute","condition","contaminate","original","various"];
+
+			function check(){
+				var score=0;
+				for(var i=0;i<10;++i){
+					var id="ans"+(i+1);
+					var x=document.getElementById(id).value;
+					if(ansl[i]==x)++score,correct[i]=1;
+					else correct[i]=0;
+				}
+				var out="scroe:"+score*10+"/100\n";
+				for(var i=0;i<10;++i){
+					out+=(i+1)+":";
+					if(correct[i])out+="correct";
+					else out+="incorrect,the answer is:"+ansl[i];
+					out+="\n";
+				}
+				alert(out);
+			}
+		</script>
+
+		1.名詞_趨勢、傾向(t_____y)<br>
+		<input type="text" input id="ans1"><br><br>
+		2.名詞_產品、貨物(g_____s)<br>
+		<input type="text" input id="ans2"><br><br>
+		3.名詞_表演、表現(p_____e)<br>
+		<input type="text" input id="ans3"><br><br>
+		4.形容詞_較重要的、主要的、重大的(m_____r)<br>
+		<input type="text" input id="ans4"><br><br>
+		5.名詞_資訊(i_____n)<br>
+		<input type="text" input id="ans5"><br><br>
+		6.動詞_表演、實施(e_____e)<br>
+		<input type="text" input id="ans6"><br><br>
+		7.名詞_情況、狀況(c_____n)<br>
+		<input type="text" input id="ans7"><br><br>
+		8.名詞_污染(c_____e)<br>
+		<input type="text" input id="ans8"><br><br>
+		9.形容詞_最初的(o_____l)<br>
+		<input type="text" input id="ans9"><br><br>
+		10.形容詞_各式各樣的(v_____s)<br>
+		<input type="text" input id="ans10"><br><br>
+		<button name="submit" onClick="check()">Submit</button>
+		</article>
+		<footer>
+			made by josh
+		</footer>		
+	</body>
+	
+</html>
