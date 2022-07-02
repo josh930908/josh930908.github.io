@@ -6,15 +6,17 @@
 	</head>
 	
 	<body>
+		<article>
 		<h3>給定對應的中文，請輸入英文</h3><br>
 		<script>
 			
 			var id;
 			var correct=[];
+
 			var ansl=["achievement","affordable","explorer","decease","emotionalism",
 					"fashionable","jeopardize","background","fascinate","adverse"];
 
-			function check(){
+					function check(){
 				var score=0;
 				for(var i=0;i<10;++i){
 					var id="ans"+(i+1);
@@ -31,9 +33,9 @@
 					else out+="incorrect,the answer is:"+ansl[i];
 					out+="<br>";
 				}
-				out+='<a href="https://josh930908.github.io/july02.html">back</a>';
+				out+='<a href="https://josh930908.github.io/july01.html">back</a>';
 			//	alert(out);
-				document.write(out);
+			document.write(out);
 			}
 		</script>
 
@@ -58,6 +60,10 @@
 		10.形容詞_不利的(a_____e)<br>
 		<input type="text" input id="ans10"><br><br>
 		<button name="submit" onClick="check()">Submit</button>
-		
+		</article>
+		<footer>
+			made by josh
+		</footer>		
 	</body>
+	
 </html>
