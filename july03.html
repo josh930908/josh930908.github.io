@@ -12,7 +12,7 @@
 				return Math.floor(Math.random()*x)+1;
 			}
 
-			var id,n=19;
+			var id,n=95;
 			var correct=[],arr=[];
 
 			for(var i=0;i<n;++i)arr[i]=i;
@@ -20,17 +20,48 @@
                 return (0.5-Math.random());
             });
 
-			var ansl=["achieve","achievement","achievable","accomplish","attain","advertise",
-                    "advertisement","advertising","adverse","publicize","afford","affordable",
-                    "anxious","anxiety","appeal","appealing","appear","attract","fascinate"];
+			var ansl=["admire","admiration","admirable","admirer","honor","esteem",
+                    "adventure","adventurer","adventrous","venture","adise","adviser","advice",
+                    "device","devise","recommend","propose","approve","approval","approvement",
+                    "improve","assent","endorse","consent","attract","attraction","attractive",
+                    "contract",
+                    "contrast","appeal","draw","detect","detective","detection","defect","detest",
+                    "determine","determined","determination","determinate","determinant","examine",
+                    "efficient","efficiency","effective","effiency","productive","inefficient",
+                    "experiment","experimental","experienced","explosive","expert","expertise",
+                    "freeze","freezer","freezing","frozen","sneeze","breeze","global","globe",
+                    "globaloze","glob","imagination","imaginative","imagine","imaginable","imaginary",
+                    "immigration","conception","impress","impression","impressive","impressionable",
+                    "impressionism","depress","express","distress","injury","injure","injurious",
+                    "industry","inquiry","graze","harm","trauma","wound","intelligent","intelligence",
+                    "intellectual","intelligible","intemperate","clever","gifted","wise"];
 
-            var q=["動詞_達成；實現(a________e)","名詞_成就；成功(a________t)","形容詞_可實現的(a________e)",
-                    "動詞_達成；實現(a________h)","動詞_達成；獲得(a________n)","動詞_打廣告(a________e)",
-                    "名詞_廣告(a________t)","名詞_廣告業(a________g)","形容詞_不利的(a________e)",
-                    "動詞_廣告、宣傳(p________e)","動詞_負擔得起(a________d)","形容詞_可負擔的(a________e)",
-                    "形容詞_焦慮的(a________s)","名詞_焦慮(a________y)","動詞_吸引；名詞_吸引力(a________l)",
-                    "形容詞_有吸引力的(a________g)","動詞_出現、似乎(a________r)","動詞_吸引(a________t)",
-                    "動詞_吸引、迷注(f________e)"];
+            var q=["動詞_欽佩；讚賞(a________e)","名詞_欽佩、讚賞(a________n)","形容詞_值得敬佩的(a________e)",
+                "名詞_愛慕者、追隨者(a________r)","動詞_尊崇(h________r)","動詞_尊崇(e________m)",
+                "名詞_冒險(a________e)","名詞_冒險家(a________r)","形容詞_驚險刺激的(a________s)","動詞_勇於冒險(v________e)","動詞_建議(a________e)",
+                "名詞_顧問、指導教授(a________r)","名詞_建議(a________e)","名詞_設備(d________e)","動詞_設計(d________e)",
+                "動詞_推薦、建議(r________d)","動詞_建議、求婚(p________e)","動詞_批准、贊成(a________e)","名詞_贊同、認可(a________l)"
+                ,"名詞_批准(a________t)","動詞_改進(i________e)","動詞_贊同(a________t)","動詞_贊同(e________e)",
+                "動詞_ 允許、同意(c________t)","動詞_吸引(a________t)","名詞_引力、迷戀(a________n)","形容詞_有吸引力的(a________e)",
+                "動詞_感染(c________t)","動詞_對比(c________t)","動詞_吸引(a________l)","動詞_吸引(d________w)",
+                "動詞_檢測、察覺(d________t)","名詞_偵探(d________e)","名詞_察覺、發現(d________n)","名詞_缺點(d________t)",
+                "動詞_憎恨(d________t)","動詞_決定(d________e)","形容詞_下決心的、堅決的(d________d)","名詞_決心(d________n)",
+                "形容詞_明確的、確定的(d________e)","名詞_決定因素(d________t)","名詞_測驗(e________e)","形容詞_有效率的(e________t)",
+                "名詞_效率(e________y)","形容詞_有效的(e________e)","名詞_功效(e________y)","形容詞_富有成效的(p________e)",
+                "形容詞_無效的(i________t)","名詞_實驗(e________t)","形容詞_實驗性的(e________l)","形容詞_經驗豐富的(e________d)",
+                "形容詞_爆炸的(e________e)","名詞_專家(e________t)","名詞_專業知識(e________e)","動詞_結冰(f________e)",
+                "名詞_冷凍櫃(f________r)","形容詞_結冰的(f________g)","形容詞_冷凍的(f________n)","動詞_打噴嚏(s________e)",
+                "名詞_微風(b________e)","形容詞_全球的(g________l)","名詞_球體(g________e)","動詞_使全球化(g________e)",
+                "名詞_一滴、一團(g________b)","名詞_想像力(i________n)","形容詞_新穎的、想像豐富的(i________e)","名詞_成像(i________e)",
+                "形容詞_可想像的(i________e)","形容詞_虛構中的(i________y)","名詞_移居(i________n)","名詞_想像力(c________n)",
+                "動詞_使印象深刻(i________s)","名詞_印象(i________n)","形容詞_使人印象深刻的(i________e)","形容詞_易受影響的(i________e)",
+                "名詞_印象派(i________m)","動詞_使沮喪(d________s)","名詞_快遞(e________s)","動詞_使悲痛(d________s)","名詞_受傷(i________y)",
+                "動詞_傷害、使受傷(i________e)","形容詞_有傷害的(i________s)","名詞_工業(i________y)","動詞_詢問、打聽(i________y)",
+                "名詞_擦傷(g________e)","名詞_傷害(h________m)","名詞_心裡創傷(t________a)","名詞_身體上的傷(w________d)",
+                "形容詞_聰明的(i________t)","名詞_智慧(i________e)","形容詞_智力的(i________l)","形容詞_明白易懂的(i________e)",
+                "形容詞_無節制的(i________e)","形容詞_伶俐的(c________r)","形容詞_聰明的、有天賦的(g________d)","形容詞_有智慧的(w________e)"];
+
+
 
 			function check(){
             //    document.body.innerHTML="";
@@ -54,12 +85,11 @@
                     out+="<br>";
                 }
                 
-			    out+='<a href="https://josh930908.github.io/july03.html">back</a>';
+			    out+='<a href="https://josh930908.github.io/july01.html">back</a>';
                 
 		    //	document.write(out2);
                 document.body.innerHTML=out;
 			}
-
             function build(){
                 var out="<h2>七月三日單字測驗</h2><h3>給定對應的中文，請輸入英文</h3><br>";
 
@@ -68,7 +98,7 @@
                     out+=(i+1);out+="."+q[arr[i]];out+="<br>";
                     out+='<input type="text" input id="'+id+'"><br><br>';
                 }
-                out+='<button name="submit" onClick="check()">Submit</button>';
+                out+='<button name="submit" onClick="check()">Submit</button>&nbsp&nbsp';
                 document.write(out);
                 
             }
