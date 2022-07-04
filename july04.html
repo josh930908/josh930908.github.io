@@ -142,6 +142,7 @@
 
             function presurprise(){
                 out='<button name="submit" onClick="surprise()">是！</button>&nbsp&nbsp';
+                out+='<button name="submit" onClick="not()">不是...</button>&nbsp&nbsp';
                 document.body.innerHTML=out;
             }
             function surprise(){
@@ -149,7 +150,11 @@
                 out+='<a href="https://josh930908.github.io/july04.html">back</a>';
                 document.body.innerHTML=out;
             }
-
+            function not() {
+                out="<h1>那你點進來衝三小...</h1>";
+                out+='<a href="https://josh930908.github.io/july04.html">back</a>';
+                document.body.innerHTML=out;
+            }
             function build(){
                 var out="<h2>七月四日單字測驗</h2><h3>給定對應的中文，請輸入英文</h3><br>";
 
