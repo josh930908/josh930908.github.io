@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <title>七月四日單字測驗</title>
+	</head>
+	
+	<body onload="build()">
+		<script>
+			function getRand(x){
+				//return random number from 1 to x
+				return Math.floor(Math.random()*x)+1;
+			}
+
+			var id,n=84;
+			var correct=[],arr=[];
+
+			for(var i=0;i<n;++i)arr[i]=i;
+            arr.sort(function(){
+                return (0.5-Math.random());
+            });
+
+			var ansl=["learning","learned","length","lease","observe","observation","observatory","objective","obscure","comply","obey","persuade","persuation","persuasive","persuasion","dissuade","perspective","convince","preparation","prepare","preparatory","preferable","prevent","prevention","preventable","preventive","prevalent","profit","nonprofit","profitable","profile","proficiently","interest","promote","promotion","promoter","promotory","prompt","accelerate","advance","boost","recognize","recognition","recognizable","identify","reduce",
+"reduction",
+"introduce",
+"produce",
+"induce",
+"relax",
+"relaxation",
+"relaxant",
+"relaxed",
+"relative",
+"ease",
+"loosen",
+"unwind",
+"reserve",
+"reservation",
+"reverse",
+"preserve",
+"order",
+"security",
+"secure",
+"safety",
+"securist",
+"shortly",
+"shorten",
+"portly",
+"structure",
+"structural",
+"construct",
+"instruct",
+"obstruct",
+"construction",
+"architecture",
+"composition",
+"visible",
+"vision",
+"visual",
+"obvious",
+"apparent",
+"invisible"
+];
+
+            var q=["名詞_學習(l________g)","形容詞_有學問的；博學的(l________d)","動詞_延長(l________h)","動詞_租用、借用(l________e)","動詞_觀察；遵守(o________e)","名詞_觀察(力)(o________n)","名詞_天文台、氣象台(o________y)","名詞_目的、目標 ；形容詞_客觀的(o________e)","形容詞_暗的；模糊的；偏僻的；微賤的(o________e)","動詞_依從(c________y)","動詞_順從(o________y)","動詞_說服；使相信(p________e)","名詞_說服(力)(p________n)","形容詞_有說服力的；令人信服的(p________e)","名詞_說服(p________n)","動詞_勸阻(d________e)","形容詞_透視的(p________e)","動詞_說服；使信服(c________e)","名詞_準備(p________n)","動詞_準備(p________e)","形容詞_準備性的(p________y)","形容詞_更合意的(p________e)","動詞_預防(p________t)","名詞_預防；防止(p________n)","形容詞_可預防的(p________e)","形容詞_預防的(p________e)","形容詞_流行的(p________t)","名詞_利潤；動詞_得益(p________t)","形容詞_非營利的(n________t)","形容詞_有利潤的(p________e)","名詞_個人資料(p________e)","形容詞_熟練的、精通的(p________y)","名詞_利潤；利息(i________t)","動詞_促進；推廣；晉升(p________e)","名詞_促進；推廣；晉升(p________n)","名詞_推廣者(p________r)","名詞_(伸入海中的)峽角(p________y)","形容詞_敏捷的、即時的(p________t)","動詞_促進；加速(a________e)","動詞_促進；進步(a________e)","動詞_促進(b________t)","動詞_辨認；認可(r________e)","名詞_辨認；認可(r________n)","形容詞_可辨別的(r________e)","動詞_辨認(i________y)",
+"(r______e)動詞_減少；減輕",
+"(r______n)名詞_減少；降低",
+"(i______e)動詞_介紹",
+"(p______e)動詞_生產",
+"(i______e)動詞_誘導",
+"(r______x)動詞_放鬆；舒緩",
+"(r______n)名詞_放鬆；鬆弛",
+"(r______t)名詞_使人放鬆的事物",
+"(r______d)形容詞_放鬆的、從容的",
+"(r______e)名詞相對論、相對性",
+"(e______e)動詞_放鬆；緩解",
+"(l______n)動詞_放鬆",
+"(u______d)動詞_放鬆",
+"(r______e)動詞_預定；保留",
+"(r______n)名詞_預約；預定",
+"(r______e)名詞_相反",
+"(p______e)動詞_保存、保藏",
+"(o______r)動詞_預定",
+"(s______y)名詞_安全",
+"(s______e)形容詞_安心的；安全的；牢固的，動詞_保護；設法得到",
+"(s______y)名詞_安全",
+"(s______s)t名詞_世俗主義者",
+"(s______ly)副詞_很快地；不久後",
+"(s______n)動詞_縮短",
+"(p______y)形容詞_(中年)肥胖的；發福的",
+"(s______e)名詞_結構",
+"(s______al)形容詞_結構上的",
+"(c______t)動詞_建造，名詞_構想",
+"(i______t)動詞_指示；講授",
+"(o______t)動詞_阻塞；阻礙",
+"(c______n)名詞_結構",
+"(a______e)名詞_建築；結構",
+"(c______n)名詞_組成；作品；結構",
+"(v______e)形容詞_可見的；顯而易見的",
+"(v______n)名詞_視覺；幻覺",
+"(v______al)形容詞_視覺的",
+"(o______s)形容詞_明顯的",
+"(a______t)形容詞_明顯的",
+"(i______e)形容詞_隱形的"];
+
+
+
+			function check(){
+            //    document.body.innerHTML="";
+				var score=0;
+				for(var i=0;i<10;++i){
+					var id="ans"+(i+1);
+					var x=document.getElementById(id).value;
+					if(ansl[arr[i]]==x)++score,correct[i]=1;
+					else correct[i]=0;
+				}
+                var out="<h2>七月四日單字測驗</h2><h3>給定對應的中文，請輸入英文</h3>score:";
+                out+=score*10+"/100<br>";
+                for(var i=0;i<10;++i){
+                    var id="ans"+(i+1);
+                    var x=document.getElementById(id).value;
+                    
+                    out+=(i+1);out+="."+q[arr[i]];out+="<br>";
+                    out+='<input type="text" input id="'+id+'" value="'+x+'">';
+                    if(correct[i])out+='<font color="green">correct</font><br>';
+                    else out+='<font color="red">incorrect</font><br>the answer is:'+ansl[arr[i]];
+                    out+="<br><br>";
+                }
+                
+			    out+='<a href="https://josh930908.github.io/july04.html">back</a>';
+                
+		    //	document.write(out2);
+                document.body.innerHTML=out;
+			}
+            function list() {
+                var out="<h2>七月四日單字測驗</h2><h3>Vocabularies List</h3><br>";
+                for(var i=0;i<n;++i){
+                    out+=(i+1)+"."+q[i]+"\t"+ansl[i]+"<br>";
+                }
+                out+='<a href="https://josh930908.github.io/july04.html">back</a>';
+                document.body.innerHTML=out;
+            }
+
+            function presurprise(){
+                out='<button name="submit" onClick="surprise()">是！</button>&nbsp&nbsp';
+                document.body.innerHTML=out;
+            }
+            function surprise(){
+                out="<h1>俊翔生日快樂！</h1>";
+                out+='<a href="https://josh930908.github.io/july04.html">back</a>';
+                document.body.innerHTML=out;
+            }
+
+            function build(){
+                var out="<h2>七月四日單字測驗</h2><h3>給定對應的中文，請輸入英文</h3><br>";
+
+                for(var i=0;i<10;++i){
+                    var id="ans"+(i+1);
+                    out+=(i+1);out+="."+q[arr[i]];out+="<br>";
+                    out+='<input type="text" input id="'+id+'"><br><br><br>';
+                }
+                out+='<button name="submit" onClick="check()">Submit</button>&nbsp&nbsp';
+                out+='<button name="submit" onClick="list()">List</button>&nbsp&nbsp';
+                out+='<button name="submit" onClick="presurprise()">你是俊翔嗎？</button>&nbsp&nbsp';
+                document.write(out);
+                
+            }
+
+		</script>
+		
+	</body>
+	
+</html>
