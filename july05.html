@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <title>七月五日單字測驗</title>
+	</head>
+	
+	<body onload="build()">
+		<script>
+			function getRand(x){
+				//return random number from 1 to x
+				return Math.floor(Math.random()*x)+1;
+			}
+
+			var id,n=95;
+			var correct=[],arr=[];
+
+			for(var i=0;i<n;++i)arr[i]=i;
+            arr.sort(function(){
+                return (0.5-Math.random());
+            });
+
+			var ansl=["amaze","amazing","graze","blaze","amateurish",
+"aside","beside","alongside","aware","awareness","beware","award","awash","awake","conscious","ignorant",
+"unaware","bacteria","bacterium","bacterial","bacteriology","benefit","beneficial","beneficiary",
+"beneficent","advantage","profit","disadvantage","citizen","civic","citizenship","cite","dewller",
+"resident","inhabitant","alien","noncitizen","conscious","consciousness","conscience","conscript","consecrate",
+"constant","constancy","constantly","distant","instant","continuous","fixed","unchanging","stable",
+"deposit","depositor","depose","savings","withdraw","engage","engagement","engaged","encourage",
+"betroth","affiance","extreme","extremely","extremism","supreme","terrific","utmost","moderate",
+"temperate","location","locate","localize","locomotive","situation","position","medal","medallion",
+"metal","mental","pedal","petal","award","reward","native","nativism","domestic","local","foreign",
+"outside","organic","organism","organize","organ","inorganic"
+];
+
+            var q=["動詞_使驚訝(a________e)","形容詞_令人驚訝的(a________g)","動詞_放牧、吃草、擦傷(g________e)","名詞_火焰(b________e)","形容詞_外行的(a________h)",
+"副詞_在旁邊(a________e)","副詞_在旁邊(b________e)","副詞_在旁邊(a________e)","形容詞_察覺的(a________e)","名詞_意識(a________s)","動詞_注意(b________e)","名詞_獎金(a________d)","形容詞_淹過的、充滿的(a________h)","形容詞_醒著的(a________e)","形容詞_意識到的(c________s)","形容詞_不知道的(i________t)",
+"形容詞_沒察覺的(u________e)","名詞_細菌（複數）(b________a)","名詞_細菌（單數）(b________m)","形容詞_細菌的(b________l)","名詞_細菌學(b________y)","名詞_好處(b________t)","形容詞_有益的(b________l)","名詞_受益人(b________y)",
+"形容詞_行善的、仁慈的(b________t)","動詞_有利於(a________e)","名詞_利潤、收益(p________t)","名詞_不利(d________e)","名詞_市民、公民(c________n)","形容詞_市民的(c________c)","名詞_公民身份(c________p)","動詞_引用(c________e)","名詞_居民(d________r)",
+"名詞_居民(r________t)","名詞_居民(i________t)","名詞_外僑(a________n)","名詞_非本國公民(n________n)","形容詞_有意識的(c________s)","名詞_意識(c________s)","名詞_良心(c________e)","動詞_徵召(c________t)","動詞_奉獻(c________e)",
+"形容詞_持續的(c________t)","名詞_恆久不變、穩定(c________y)","副詞_總是、經常地(c________y)","形容詞_遙遠的(d________t)","形容詞_立刻的(i________t)","形容詞_持續的(c________s)","形容詞_固定的(f________d)","形容詞_不變的(u________g)","形容詞_穩定的、安定的(s________e)",
+"動詞_存放、存錢(d________t)","名詞_存款人、帳戶(d________r)","動詞_罷免、使下台(d________e)","名詞_存款(s________s)","動詞_提領(w________w)","動詞_使參預；訂婚(e________e)","名詞_訂婚(e________t)","形容詞_已訂婚的(e________d)","動詞_鼓勵、助長(e________e)",
+"動詞_和...訂婚(b________h)","動詞_和...訂婚(a________e)","形容詞_極端的(e________e)","副詞_非常、極端(e________y)","名詞_極端主義(e________m)","形容詞_極度的、最高的(s________e)","形容詞_非常的(t________c)","形容詞_極度的(u________t)","形容詞_適度的、溫和的(m________e)",
+"形容詞_適度的、溫和的(t________e)","名詞_位置(l________n)","動詞_位於(l________e)","動詞_將...限制在局部(l________e)","名詞_火車頭(l________e)","名詞_位置、處境、狀況(s________n)","名詞_位置、職位、立場、狀態(p________n)","名詞_獎牌(m________l)","名詞_大獎牌(m________n)",
+"名詞_金屬(m________l)","形容詞_心理的(m________l)","名詞_踏板(p________l)","名詞_花瓣(p________l)","名詞_獎品(a________d)","名詞_賞金、報酬(r________d)","形容詞_本國的、本土的(n________e)","名詞_本土主義(n________m)","形容詞_家庭的、國內的、馴養的(d________c)","形容詞_當地的(l________l)","形容詞_外國的、外來的(f________n)",
+"形容詞_外部的(o________e)","形容詞_有機的(o________c)","名詞_生物體、有機體(o________m)","動詞_使有條理、安排(o________e)","名詞_器官、組織(o________n)","形容詞_無機的、非自然生長的(i________c)"];
+
+
+
+			function check(){
+            //    document.body.innerHTML="";
+				var score=0;
+				for(var i=0;i<10;++i){
+					var id="ans"+(i+1);
+					var x=document.getElementById(id).value;
+					if(ansl[arr[i]]==x)++score,correct[i]=1;
+					else correct[i]=0;
+				}
+                var out="<h2>七月五日單字測驗</h2><h3>給定對應的中文，請輸入英文</h3>score:";
+                out+=score*10+"/100<br>";
+                for(var i=0;i<10;++i){
+                    var id="ans"+(i+1);
+                    var x=document.getElementById(id).value;
+                    
+                    out+=(i+1);out+="."+q[arr[i]];out+="<br>";
+                    out+='<input type="text" input id="'+id+'" value="'+x+'">';
+                    if(correct[i])out+='<font color="green">correct</font><br>';
+                    else out+='<font color="red">incorrect</font><br>the answer is:'+ansl[arr[i]];
+                    out+="<br><br>";
+                }
+                
+			    out+='<a href="https://josh930908.github.io/july05.html">back</a>';
+                
+		    //	document.write(out2);
+                document.body.innerHTML=out;
+			}
+            function list() {
+                var out="<h2>七月五日單字測驗</h2><h3>Vocabularies List</h3><br>";
+                for(var i=0;i<n;++i){
+                    out+=(i+1)+"."+q[i]+"\t"+ansl[i]+"<br>";
+                }
+                out+='<a href="https://josh930908.github.io/july05.html">back</a>';
+                document.body.innerHTML=out;
+            }
+
+            function build(){
+                var out="<h2>七月五日單字測驗</h2><h3>給定對應的中文，請輸入英文</h3><br>";
+
+                for(var i=0;i<10;++i){
+                    var id="ans"+(i+1);
+                    out+=(i+1);out+="."+q[arr[i]];out+="<br>";
+                    out+='<input type="text" input id="'+id+'"><br><br><br>';
+                }
+                out+='<button name="submit" onClick="check()">Submit</button>&nbsp&nbsp';
+                out+='<button name="submit" onClick="list()">List</button>&nbsp&nbsp';
+                document.write(out);
+                
+            }
+
+		</script>
+		
+	</body>
+	
+</html>
