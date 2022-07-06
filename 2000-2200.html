@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <title>單字用法測驗</title>
+	</head>
+	
+	<body onload="build()">
+		<script>
+			function getRand(x){
+				//return random number from 1 to x
+				return Math.floor(Math.random()*x)+1;
+			}
+
+			var id,n=86;
+			var correct=[],arr=[];
+
+			for(var i=0;i<n;++i)arr[i]=i;
+            arr.sort(function(){
+                return (0.5-Math.random());
+            });
+
+			var ansl=["of","for","To","against","with","with","to/with","under","for","to","for","against/on","towards","on","to","table of","from","from","in","with","of","to","to","against/for","over","as","to","to","On the","to the","made/on","to","from","on","on","do","on","running","to","as","onto/to","in","made","against","of","yourself to","seeing","from","on","to","for/to","to","to/with","to","for","with","toward/to","to","to/for","a","in","to","to","of","calls the","for","for","against","for","to","made","with","to","came to","suicide","to","among/to","of","of","with","to","to","by","with","of","from","in"];
+
+            var q=["Let me assure you ________ my full support.","He has a great capacity ________ learning languages.","________ what extent can he be trusted?","They started a campaign ________ smoking.","Never identify opinions ________ facts.","Children's identification ________ TV heroes may worry parents.","Hlis opinions are almost identical ________ mine.","The hotel is ________ construction.","I’ve written five appications ________ jobs.","The speech is about the application of multimedia ________ the classroom.","We had 150 applicants ________ the job.","She is leaning ________ his shoulder, half asleep.","He has a tendency ________ pessimism.","Concentrate ________ your work,please.","A teacher has to pace his teaching ________ his students' abilities.","The ________ contents tells you what is inside a book.","We took shelter ________ the storm in a barn.","The wall shelters the house ________ the north wind.","The letter was written ________ code and I couldn’t understand it.","You'd better consult ________ your parents before taking the job.","This aspirin wil relieve you ________ your headache.","Their plot ________ rob a Dank was uncovered.","I was a witness ________ the gunfight.","She witnessed ________ the accused.","Her desire for domination ________ others.","I interpret his silence ________ disllke.","He asked me a question relative ________ the subject.","His views are contrary ________ mine.","You didn't bother me. ________ contrary, I enjoy your company.","Unless I hear anything ________ contrary, I'll assume the plan hasn't changed.","Her speech ________ a strong impression ________ me.","Jack was assigned ________ the branch office in London.","Can you distinguish a real pearl ________ a fake?","Do you have comments to make ________ the scandal?","His speech had a strong impact ________ the audience.","I’ve got a few errands to ________ in town.","Why is she always sending me ________ errands?","I'm tired of ________ errands for her.","Anew teacher was appointed ________ the mountain school.","We congratulated him on his appointment ________ principal.","Don't try to shift the responsibility ________ someone else.","A sudden shift ________ weight caused the boat to turn over.","Sandy ________ a New Year's resolution to lose weight.","A thick overcoat is a good defense ________ the cold.","Water is composed ________ hydrogen and oxygen.","Don't abandon ________ despair.","I don't recall ________  any cars parked outside.","Accidents arise ________ carelessness.","I want you to be ________ your best behavior at school.","He was devoted ________ writing.","Hard work is essential ________ success.","I have no objection ________ their plan.","His gray hair is in sharp contrast ________ his dark skin.","Fresh air is fundamental ________ good health.","I feel sympathy ________ the homeless.","Many people feel sympathy ________ your views.","I’m sympathetic ________ his aim.","I am very attached ________ that old picture.","I have a strong attachment this od little house.","He lost the election by ________ mere 20 votes.","I was absorbed ________ a book and didn't hear you call.","They put up a strong resistance ________ the new law.","He loaned his painting collection ________ the gallery.","She accused him ________ stealing her watch.","The teacher ________ register first thing in the moring.","There is no sure formula ________ success.","Large crowds are demonstrating ________ human right.","Thousands of people took part in a demonstration ________ the war. ","He's inadequate ________ the job.","He can’t adjust (himself) ________ army life.","I've ________ a slight adjustment to the design.","He took a drink and then proceeded ________ his story.","Your support is vital ________ the success of my plan.",
+            "Fortunately,a youth ________ her assistamce when she was drowning?","he tried to commit ________.","He. didn't commit himself ________ anything. did he?","Food has been distributed ________ the victims. Janet is critical ________ Joe because she doesnit like him.","Silence is characteristic ________ my little sister.","Ill furnish you ________ all you need.","It is a crime to expose children ________ sex on TV.","l am opposed ________ the plan.","He is a bus driver by occupation.","Paris is often associated ________ romance.","He tried to canvince me ________ his honesty.","Ive decided to eliminate meat ________ my diet.","It's a tragedy that one lacks confidence ________ himself."];
+
+
+
+			function check(){
+            //    document.body.innerHTML="";
+				var score=0;
+				for(var i=0;i<10;++i){
+					var id="ans"+(i+1);
+					var x=document.getElementById(id).value;
+					if(ansl[arr[i]]==x)++score,correct[i]=1;
+					else correct[i]=0;
+				}
+                var out="<h2>2000-2200單字用法測驗</h2><h3>給定例句，請填入英文</h3>score:";
+                out+=score*10+"/100<br>";
+                for(var i=0;i<10;++i){
+                    var id="ans"+(i+1);
+                    var x=document.getElementById(id).value;
+                    
+                    out+=(i+1);out+="."+q[arr[i]];out+="<br>";
+                    out+='<input type="text" input id="'+id+'" value="'+x+'">';
+                    if(correct[i])out+='<font color="green">correct</font><br>';
+                    else out+='<font color="red">incorrect</font><br>the answer is:'+ansl[arr[i]];
+                    out+="<br><br>";
+                }
+                
+			    out+='<a href="https://josh930908.github.io/july05.html">back</a>';
+                
+		    //	document.write(out2);
+                document.body.innerHTML=out;
+			}
+            function list() {
+                var out="<h2>2000-2200單字用法測驗</h2><h3>Vocabularies List</h3><br>";
+                for(var i=0;i<n;++i){
+                    out+=(i+1)+"."+q[i]+"\t"+ansl[i]+"<br>";
+                }
+                out+='<a href="https://josh930908.github.io/july05.html">back</a>';
+                document.body.innerHTML=out;
+            }
+
+            function build(){
+                var out="<h2>2000-2200單字用法測驗</h2><h3>給定例句，請填入英文</h3><br>";
+
+                for(var i=0;i<10;++i){
+                    var id="ans"+(i+1);
+                    out+=(i+1);out+="."+q[arr[i]];out+="<br>";
+                    out+='<input type="text" input id="'+id+'"><br><br><br>';
+                }
+                out+='<button name="submit" onClick="check()">Submit</button>&nbsp&nbsp';
+                out+='<button name="submit" onClick="list()">List</button>&nbsp&nbsp';
+                document.write(out);
+                
+            }
+
+		</script>
+		
+	</body>
+	
+</html>
