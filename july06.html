@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <title>七月六日單字測驗</title>
+	</head>
+	
+	<body onload="build()">
+		<script>
+			function getRand(x){
+				//return random number from 1 to x
+				return Math.floor(Math.random()*x)+1;
+			}
+
+			var id,n=68;
+			var correct=[],arr=[];
+
+			for(var i=0;i<n;++i)arr[i]=i;
+            arr.sort(function(){
+                return (0.5-Math.random());
+            });
+
+			var ansl=["organize","organization","arrange","establish","presence","present","attend","show up","process","procession","access","proceed","course","procedure","religious","religion","devout","remain","remains","remaining","reserve","preserve","be left over","replace","replacement","substitute","supplant","request","require","demand","claim","mandate","resource","resourceful","source","risk","risky","brisk","disk","routine","route","scientist","scientific","suffer","suffering","buffer","confer","talent","talentedx","prevalent","ability","capacity","threat","threaten","retreat","entreat","menace","imperil","unique","unparalleled","distinctive","particular","inimitable","premium","accustomed","general","ordinary","usual"];
+
+            var q=["動詞_安排、組織(o________e)","名詞_安排、籌劃(o________n)","動詞_安排(a________e)","動詞_建立、組織(e________h)","名詞_出席、在場(p________e)","形容詞_出席的、在場的(p________t)","動詞_出席(a________d)","片語_出席(s__ __p)","名詞_過程；動詞_加工(p________s)","名詞_隊伍；動詞_遊行(p________n)","名詞_存取權；動詞_訪問(a________s)","動詞_繼續進行(p________d)","名詞_過程、課程(c________e)","名詞_過程、程序(p________e)","形容詞_宗教的、虔誠的(r________s)","名詞_宗教(r________n)","形容詞_虔誠的(d________t)","動詞_保持、遺留、剩下(r________n)","名詞_剩餘物(r________s)","形容詞_剩下的(r________g)","動詞_保留(r________e)","動詞_保持(p________e)","片語_殘留、剩下(b__ __ __r)","動詞_取代(r________e)","名詞_替代物、更換(r________t)","動詞_取代(s________e)","動詞_取代、擠出(s________t)","名詞、動詞_要求(r________t)","動詞_要求、命令(r________e)","動詞、名詞_要求(d________d)","名詞_要求(c________m)","名詞_要求、命令(m________t)","名詞_資源(r________e)","形容詞_機敏的、足智多謀的(r________l)","名詞_來源(s________e)","名詞_風險；動詞_冒險(r________k)","形容詞_冒險的(r________y)","形容詞_輕快的(b________k)","名詞_唱片、磁盤(d________k)","名詞_例行程序(r______e)",
+"名詞_路線(r________e)",
+"名詞_科學家(s________t)",
+"形容詞_科學的(s________c)",
+"動詞_遭受(苦難、折磨)(s________r) ",
+"名詞_痛苦(s________g)",
+"名詞_緩衝；緩和(b________r)",
+"動詞_頒發(c________r)",
+"名詞_天分；才能(t_____t) ",
+"形容詞_有天賦的；才華洋溢的(t________d)",
+"形容詞_流行(p________t)",
+"名詞_能力(a________y)",
+"名詞_才能；容量(c________y)",
+"名詞_威脅(t________t)",
+"動詞_威脅；脅迫(t________n)",
+"名詞,動詞_撤退(r________t)",
+"動詞_懇求(e_____t)",
+"動詞_威脅(m_____e)",
+"動詞_威脅(i________l)",
+"形容詞_獨特的；獨一無二的(u________e)",
+"形容詞_獨一無二的；空前的(u________d)",
+"形容詞_獨特的(d________e)",
+"形容詞_獨特的(p________r)",
+"形容詞_獨特的(i________e)",
+"形容詞_獨特的(p________m)",
+"形容詞_慣例的(a________d)",
+"形容詞_一般的(g_____l)",
+"形容詞_普通的(o________y)",
+"形容詞_通常(u________l)",
+"動詞_安排、組織(o________e)","名詞_安排、籌劃(o________n)","動詞_安排(a________e)","動詞_建立、組織(e________h)","名詞_出席、在場(p________e)","形容詞_出席的、在場的(p________t)","動詞_出席(a________d)","片語_出席(s__ __p)","名詞_過程；動詞_加工(p________s)","名詞_隊伍；動詞_遊行(p________n)","名詞_存取權；動詞_訪問(a________s)","動詞_繼續進行(p________d)","名詞_過程、課程(c________e)","名詞_過程、程序(p________e)","形容詞_宗教的、虔誠的(r________s)","名詞_宗教(r________n)","形容詞_虔誠的(d________t)","動詞_保持、遺留、剩下(r________n)","名詞_剩餘物(r________s)","形容詞_剩下的(r________g)","動詞_保留(r________e)","動詞_保持(p________e)","片語_殘留、剩下(b__ __ __r)","動詞_取代(r________e)","名詞_替代物、更換(r________t)","動詞_取代(s________e)","動詞_取代、擠出(s________t)","名詞、動詞_要求(r________t)","動詞_要求、命令(r________e)","動詞、名詞_要求(d________d)","名詞_要求(c________m)","名詞_要求、命令(m________t)","名詞_資源(r________e)","形容詞_機敏的、足智多謀的(r________l)","名詞_來源(s________e)","名詞_風險；動詞_冒險(r________k)","形容詞_冒險的(r________y)","形容詞_輕快的(b________k)","名詞_唱片、磁盤(d________k)","名詞_例行程序(r______e)",
+"名詞_路線(r______e)",
+"名詞_科學家(s______t)",
+"形容詞_科學的(s______c)",
+"動詞_遭受(苦難、折磨)(s______r) ",
+"名詞_痛苦(s______g)",
+"名詞_緩衝；緩和(b______r)",
+"動詞_頒發(c______r)",
+"名詞_天分；才能(t_____t) ",
+"形容詞_有天賦的；才華洋溢的(t______d)",
+"形容詞_流行(p______t)",
+"名詞_能力(a______y)",
+"名詞_才能；容量(c______y)",
+"名詞_威脅(t______t)",
+"動詞_威脅；脅迫(t______n)",
+"名詞,動詞_撤退(r______t)",
+"動詞_懇求(e_____t)",
+"動詞_威脅(m_____e)",
+"動詞_威脅(i______l)",
+"形容詞_獨特的；獨一無二的(u______e)",
+"形容詞_獨一無二的；空前的(u______d)",
+"形容詞_獨特的(d______e)",
+"形容詞_獨特的(p______r)",
+"形容詞_獨特的(i______e)",
+"形容詞_獨特的(p______m)",
+"形容詞_慣例的(a______d)",
+"形容詞_一般的(g_____l)",
+"形容詞_普通的(o______y)",
+"形容詞_通常(u______l)"
+];
+
+
+
+			function check(){
+            //    document.body.innerHTML="";
+				var score=0;
+				for(var i=0;i<10;++i){
+					var id="ans"+(i+1);
+					var x=document.getElementById(id).value;
+					if(ansl[arr[i]]==x)++score,correct[i]=1;
+					else correct[i]=0;
+				}
+                var out="<h2>七月六日單字測驗</h2><h3>給定對應的中文，請輸入英文</h3>score:";
+                out+=score*10+"/100<br>";
+                for(var i=0;i<10;++i){
+                    var id="ans"+(i+1);
+                    var x=document.getElementById(id).value;
+                    
+                    out+=(i+1);out+="."+q[arr[i]];out+="<br>";
+                    out+='<input type="text" input id="'+id+'" value="'+x+'">';
+                    if(correct[i])out+='<font color="green">correct</font><br>';
+                    else out+='<font color="red">incorrect</font><br>the answer is:'+ansl[arr[i]];
+                    out+="<br><br>";
+                }
+                
+			    out+='<a href="https://josh930908.github.io/july06.html">back</a>';
+                
+		    //	document.write(out2);
+                document.body.innerHTML=out;
+			}
+            function list() {
+                var out="<h2>七月六日單字測驗</h2><h3>Vocabularies List</h3><br>";
+                for(var i=0;i<n;++i){
+                    out+=(i+1)+"."+q[i]+"\t"+ansl[i]+"<br>";
+                }
+                out+='<a href="https://josh930908.github.io/july06.html">back</a>';
+                document.body.innerHTML=out;
+            }
+
+            function build(){
+                var out="<h2>七月六日單字測驗</h2><h3>給定對應的中文，請輸入英文</h3><br>";
+
+                for(var i=0;i<10;++i){
+                    var id="ans"+(i+1);
+                    out+=(i+1);out+="."+q[arr[i]];out+="<br>";
+                    out+='<input type="text" input id="'+id+'"><br><br><br>';
+                }
+                out+='<button name="submit" onClick="check()">Submit</button>&nbsp&nbsp';
+                out+='<button name="submit" onClick="list()">List</button>&nbsp&nbsp';
+                document.write(out);
+                
+            }
+
+		</script>
+		
+	</body>
+	
+</html>
