@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+        <link href="favicon.svg" rel="shortcut icon"/>
+	    <title>單字用法測驗</title>
+	</head>
+	
+	<body onload="build()">
+		<script>
+			function getRand(x){
+				//return random number from 1 to x
+				return Math.floor(Math.random()*x)+1;
+			}
+
+			var id,n=67;
+			var correct=[],arr=[];
+
+			for(var i=0;i<n;++i)arr[i]=i;
+            arr.sort(function(){
+                return (0.5-Math.random());
+            });
+
+			var ansl=["on","from","on","go","about","on","with","themselves","with","for","of","between","make","to","held;in","for","to","to","in","with","of","to","to","for","in","to","on","on","to","over/against","in/among","in","for","from/against","against","against","from","in","for","on","from ","from","to","to ","to","to ","in","on","with","in","to","to/at","with","with","by","of","about","after","for","for","for","to","for","from","from","at","in"
+        ];
+
+            var q=["Sadly , he is completely hooked __ gambling and heroin.","Our tastes differ __ each other.","We're going to Tahiti  __ our honeymoon.","He started to __ bald when he was only 30.","Not everyone is so pessimistic __ the future ; some are quite optimistic(樂觀的).","If you wish to adopt a dog , please visit our website to obtain more information __ it. ","The survivors were issued __ warm clothing.","I like the way your children conduct __ . ","She never loses heart when she is confronted __ difficulties ."," People adore him __ his noble character ."," Jessie is a writer __ distinction.","Can you make a distinction __ these two ideas ?","Can you __ a distinction between these two ideas ?","This ticket entitles you __ a free lunch .","I've always __ poets __ awe.","There's no justification __ your rudeness .","My kid brother is allergic __ dust.","He has an allergy __ dust .","She was __ league with her mother to embarrass me .","She was in league __ her mother to embarrass me .","He's cruel to animals ; he has no notion __ animal rights .","He refused to submit __ his fate.","He'll submit his plan __ the city council for approval .","Jim's scheme __ raising money is practicable.","The air gets cooler __ proportion to the height of the ground .","The air gets cooler in proportion __ the height of the ground .","Don't impose your wishes __ me .","The government intends to impose further taxes __ wines .","The government refused to yield __ the terrorists ' demands .","Good will prevail __.","The custom of giving children lucky money during the Lunar New Year prevails __ Chinese communities .","He's a specialist __ eye surgery .","Does her experience qualify her __ the job ?","Be sure to lock the door to secure the house __ burglary .","It is advisable to insure your car __ theft .","More care would insure you __ making so many mistakes .","I must restrain myself __ saying something rude .","Happiness does not reside __ power or money .","What was his motive __ the killing ?","She bought the necklace __ impulse .","The chandelier is suspended __ the ceiling .","Tom is suspended __ school for a week for bad conduct .","The animal farm was converted __ an orchard . ","He's converted __ Buddhism by a Chinese priest .","Little children always cling __ their mothers .","He clings tightly __ his remaining possessions .","Fish and meat should be kept __ cold storage .","The child would not let go of his grip __ his mother .","The small country allied itself __ the stronger power .","If you persist __ breaking the law , you will go to prison .","The judge condemned the thief __ one year of hard labor .","Mom is always preaching __ me about keeping my room tidy .","Your account of the accident has little correspondence __ the story the other driver told .","I had kept up correspondence __ him until the war broke out .","The country is bounded on three sides __ the sea.","I inquired __ a passer - by about buses to the hotel .","I inquired of a passer - by __ buses to the hotel .","A lady called to inquire __ your father .","Honey can substitute __ sugar in this recipe ."," You can substitute honey __ sugar in this recipe .","Is saccharin ) a good substitute __ sugar ?","Jim attributes his success __ hard work .","I still have affection __ my old school .","I've inherited quite a lot of money __ my parents ."," She inherited both her intelligence and beauty __ her mother .","The car came round the corner __ such a velocity that the driver was unable to keep it on the road .","He's very rigid __ his ideas on marriage ."
+        ];
+
+
+
+			function check(){
+            //    document.body.innerHTML="";
+				var score=0;
+				for(var i=0;i<10;++i){
+					var id="ans"+(i+1);
+					var x=document.getElementById(id).value;
+					if(ansl[arr[i]]==x)++score,correct[i]=1;
+					else correct[i]=0;
+				}
+                var out="<h2>2800-3000單字用法測驗</h2><h3>給定例句，請填入英文</h3>score:";
+                out+=score*10+"/100<br>";
+                for(var i=0;i<10;++i){
+                    var id="ans"+(i+1);
+                    var x=document.getElementById(id).value;
+                    
+                    out+=(i+1);out+="."+q[arr[i]];out+="<br>";
+                    out+='<input type="text" input id="'+id+'" value="'+x+'">';
+                    if(correct[i])out+='<font color="green">correct</font><br>';
+                    else out+='<font color="red">incorrect</font><br>the answer is:'+ansl[arr[i]];
+                    out+="<br><br>";
+                }
+                
+			    out+='<a href="https://josh930908.github.io/2800-3000.html">back</a>';
+                
+		    //	document.write(out2);
+                document.body.innerHTML=out;
+			}
+            function list() {
+                var out="<h2>2800-3000單字用法測驗</h2><h3>Vocabularies List</h3><br>";
+                for(var i=0;i<n;++i){
+                    out+=(i+1)+"."+q[i]+"\t"+ansl[i]+"<br>";
+                }
+                out+='<a href="https://josh930908.github.io/2800-3000.html">back</a>';
+                document.body.innerHTML=out;
+            }
+
+            function build(){
+                var out="<h2>july072800-3000單字用法測驗</h2><h3>給定例句，請填入英文</h3><br>";
+
+                for(var i=0;i<10;++i){
+                    var id="ans"+(i+1);
+                    out+=(i+1);out+="."+q[arr[i]];out+="<br>";
+                    out+='<input type="text" input id="'+id+'"><br><br><br>';
+                }
+                out+='<button name="submit" onClick="check()">Submit</button>&nbsp&nbsp';
+                out+='<button name="submit" onClick="list()">List</button>&nbsp&nbsp';
+                document.write(out);
+                
+            }
+
+		</script>
+
+	</body>
+	
+</html>
