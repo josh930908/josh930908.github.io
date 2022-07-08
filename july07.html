@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <title>七月七日單字測驗</title>
+	</head>
+	
+	<body onload="build()">
+		<script>
+			function getRand(x){
+				//return random number from 1 to x
+				return Math.floor(Math.random()*x)+1;
+			}
+
+			var id,n=89;
+			var correct=[],arr=[];
+
+			for(var i=0;i<n;++i)arr[i]=i;
+            arr.sort(function(){
+                return (0.5-Math.random());
+            });
+
+			var ansl=["capture","captor","captive","captain","gesture","seize","arrest","grab hold on","release",
+"career","careerist","careen","vocation","profession",
+"decade","decennary","decay","century",
+"emergency","emergence","emerge","urgency","crisis",
+"exchange","barter","swap",
+"opportunity","opportunistic","opportunism","opposite","chance",
+"practical","practically","practicable","practicability","portable","applied","impractical",
+"precious","preciously","previous","precise","invaluable","priceless",
+"previous","earlier","preceding","former","later","rate",
+"underrate","overrate","ratio","percentage","judge","assess",
+"evaluate","remind","reminder","recall","call attention to",
+"response","respond","responsive","reply","replication","in response to",
+"responsibility","responsible","duty","liability","blame",
+"irresponsable","take responsibility for","reveal","revealing","revel",
+"disclose","leak out","conceal","saving","savings","save","savage","thrift",
+"frugal","profligacy","blow","squander"
+
+];
+
+            var q=["動詞_逮捕；捕捉(c________e)","名詞_捉拿者(c________r)","形容詞_被俘的(c________e)","名詞_隊長(c________n)","名詞_姿勢(g________e)","動詞_抓住(s________e)","動詞_逮捕(a________t)","動詞(片語)_控制(g__ ___ ___n)","動詞_釋放(r________e)",
+"名詞_職涯(c________r)","名詞_事業狂(c________t)","動詞_橫衝直撞(c________n))","名詞_職業(v________n)","名詞_職業、行業(p________n)","名詞_十年(d________e)","名詞_十年間(d________y)","動詞_腐朽(d________y)","名詞_百年(c________y)",
+"名詞_緊急狀況(e________y)","動詞_嶄露頭角(e________e)","動詞_浮現(e________e)","名詞_緊急的事(u________y)","名詞_危機(c________s)",
+"動詞_交換；交流(e________e)","動詞_以物易物(b________r)","動詞_交換；交流(s_______ap)",
+"名詞_機會(o________y)","形容詞_投機的(o________c)","名詞_機會主義(o________m)","形容詞_相反的(o________e)","名詞_機會(c________e)",
+"形容詞_實際的；實用的(p________l)","副詞_實際上；幾乎(p________y)","形容詞_可行的(p________e)","名詞_可行性(p________y)","形容詞_便攜的(p________e)","形容詞_實用的(a________d)",
+"形容詞_不切實際的(i________l)","形容詞_珍貴的(p________s)","副詞_做作地(p________y)","形容詞_之前的(p________s)","形容詞_精準的(p________e)","形容詞_無價的(i________e)","形容詞_無價的(p________s)",
+"副詞_之前地(p________s)","形容詞_早的(e________r)","形容詞_在先的(p________g)","形容詞_以前的(f________r)","形容詞_以後的(l________r)","名詞_比率(r________e)",
+"動詞_低估(u________e)","動詞_高估(o________e)","名詞_比率(r________o)","名詞_比率、百分比(p________e)","動詞_判斷、估計(j________e)","動詞_評估(a________s)",
+"動詞_評估(e________e)","動詞_提醒(r________d)","名詞_提醒(r________r)","動詞_記起(r________l)","動詞_提醒(c__ ________ __o)",
+"名詞_回答；回應(r________e)","動詞_回答；回應(r________d)","形容詞_反應積極的、敏捷的(r________e)","名詞_回答(r________y)","名詞_回答(r________n)","片語_作為對...的答覆(i__ ________ __o)",
+"名詞_責任(r________y)","形容詞_有責任的(r________e)","名詞_責任；關稅(d________y)","名詞_義務、責任(l________y)","名詞_責任、過失(b________e)",
+"形容詞_不負責任的(i________e)","片語_為...負責(t___ ________ __r)","動詞_透露(r________l)","形容詞_衣著暴漏的、揭開真相的(r________g)","名詞_狂歡(r________l)",
+"動詞_揭曉(d________e)","動詞_透露、洩漏(l___ ___t)","動詞_隱藏(c________l)","名詞_節約、節省(s________g)","名詞_存款(s________s)","動詞_節省、拯救(s________e)","形容詞_野蠻的(s________e)","名詞_節省、節約(t________t)",
+"形容詞_節約、節儉(f________l)","名詞_浪費(p________y)","動詞_揮霍、浪費(b________w)","動詞_揮霍、浪費(s________r)"
+];
+
+
+
+			function check(){
+            //    document.body.innerHTML="";
+				var score=0;
+				for(var i=0;i<10;++i){
+					var id="ans"+(i+1);
+					var x=document.getElementById(id).value;
+					if(ansl[arr[i]]==x)++score,correct[i]=1;
+					else correct[i]=0;
+				}
+                var out="<h2>七月七日單字測驗</h2><h3>給定對應的中文，請輸入英文</h3>score:";
+                out+=score*10+"/100<br>";
+                for(var i=0;i<10;++i){
+                    var id="ans"+(i+1);
+                    var x=document.getElementById(id).value;
+                    
+                    out+=(i+1);out+="."+q[arr[i]];out+="<br>";
+                    out+='<input type="text" input id="'+id+'" value="'+x+'">';
+                    if(correct[i])out+='<font color="green">correct</font><br>';
+                    else out+='<font color="red">incorrect</font><br>the answer is:'+ansl[arr[i]];
+                    out+="<br><br>";
+                }
+                
+			    out+='<a href="https://josh930908.github.io/july07.html">back</a>';
+                
+		    //	document.write(out2);
+                document.body.innerHTML=out;
+			}
+            function list() {
+                var out="<h2>七月七日單字測驗</h2><h3>Vocabularies List</h3><br>";
+                for(var i=0;i<n;++i){
+                    out+=(i+1)+"."+q[i]+"\t"+ansl[i]+"<br>";
+                }
+                out+='<a href="https://josh930908.github.io/july07.html">back</a>';
+                document.body.innerHTML=out;
+            }
+
+            function build(){
+                var out="<h2>七月七日單字測驗</h2><h3>給定對應的中文，請輸入英文</h3><br>";
+
+                for(var i=0;i<10;++i){
+                    var id="ans"+(i+1);
+                    out+=(i+1);out+="."+q[arr[i]];out+="<br>";
+                    out+='<input type="text" input id="'+id+'"><br><br><br>';
+                }
+                out+='<button name="submit" onClick="check()">Submit</button>&nbsp&nbsp';
+                out+='<button name="submit" onClick="list()">List</button>&nbsp&nbsp';
+                document.write(out);
+                
+            }
+
+		</script>
+		
+	</body>
+	
+</html>
