@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <title>LV1</title>
+        <script type="text/javascript" src="./LV1.js"></script>
+
+	</head>
+	
+	<body onload="build()">
+		<script>
+			function getRand(x){
+				//return random number from 1 to x
+				return Math.floor(Math.random()*x)+1;
+			}
+
+			var id;
+			var correct=[],arr=[];
+
+			for(var i=0;i<n;++i)arr[i]=i;
+            arr.sort(function(){
+                return (0.5-Math.random());
+            });
+
+			function check(){
+            //    document.body.innerHTML="";
+				var score=0;
+				for(var i=0;i<10;++i){
+					var id="ans"+(i+1);
+					var x=document.getElementById(id).value;
+					if(ansl[arr[i]]==x)++score,correct[i]=1;
+					else correct[i]=0;
+				}
+                var out="<title>LV1</title><h2>LV1</h2><h3>給定對應的中文，請輸入英文</h3>score:";
+                out+=score*10+"/100<br>";
+                for(var i=0;i<10;++i){
+                    var id="ans"+(i+1);
+                    var x=document.getElementById(id).value;
+                    
+                    out+=(i+1);out+="."+q[arr[i]];out+="<br>";
+                    out+='<input type="text" input id="'+id+'" value="'+x+'">';
+                    if(correct[i])out+='<font color="green">correct</font><br>';
+                    else out+='<font color="red">incorrect</font><br>the answer is:'+ansl[arr[i]];
+                    out+="<br><br>";
+                }
+                out+='<button onClick="window.location.reload();">Back</button>';
+                
+		    //	document.write(out2);
+                document.body.innerHTML=out;
+			}
+            function list() {
+                var out="<title>LV1</title><h2>LV1</h2><h3>Vocabularies List</h3><br>";
+                out+='<table border="1">';
+                for(var i=0;i<n;++i){
+                    out+='<tr>';
+                    out+="<td>"+(i+1)+".</td><td>"+q[i]+"</td><td>"+ansl[i]+"</td>";
+                    out+='</tr>';
+                }
+    
+                out+='<button onClick="window.location.reload();">Back</button>';
+                document.body.innerHTML=out;
+            }
+
+            function build(){
+                var out="<title>LV1</title><h2>LV1</h2><h3>給定對應的中文，請輸入英文</h3><br>";
+
+                for(var i=0;i<10;++i){
+                    var id="ans"+(i+1);
+                    out+=(i+1);out+="."+q[arr[i]];out+="<br>";
+                    out+='<input type="text" input id="'+id+'"><br><br><br>';
+                }
+                out+='<button name="submit" onClick="check()">Submit</button>&nbsp&nbsp';
+                out+='<button name="submit" onClick="list()">List</button>&nbsp&nbsp';
+                document.write(out);
+                
+            }
+
+		</script>
+		
+	</body>
+	
+</html>
