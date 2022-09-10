@@ -1,19 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Index</title>
-</head>
-<body>
-    <h1>Index</h1>
-    <h3>7000 vocabularies classfied by level</h3>
-    <a href="https://josh930908.github.io/7000voc/LV1.html">LV.1</a><br>
-    <a href="https://josh930908.github.io/7000voc/LV2.html">LV.2</a><br>
-    <a href="https://josh930908.github.io/7000voc/LV3.html">LV.3</a><br>
-    <a href="https://josh930908.github.io/7000voc/LV4.html">LV.4</a><br>
-    <a href="https://josh930908.github.io/7000voc/LV5.html">LV.5</a><br>
-    <a href="https://josh930908.github.io/7000voc/LV6.html">LV.6</a><br>
-    <h6>Author:W_X_Dai,Date:2022/09/07</h6>
-</body>
+<html>
+	<head>
+		<meta charset="utf-8">
+        <script type="text/javascript" src="./file.js"></script>
+        <script type="text/javascript" src="./script.js"></script>
+        <link rel=stylesheet type="text/css" href="style.css">
+
+	</head>
+	
+	<body>
+
+        <div id="header">Powerful Vocabularies Tool</div>
+        <div id="menu">
+			<h3>Please select the level of Vocabularies.</h3>
+            <select name="level" id="level" onchange="select_level()">
+				<script>
+					document.write('<option value="-1" > -- </option>')
+					for(var i=1;i<=6;++i){
+						document.write('<option value='+i+'>level '+i+'</option>');
+						document.write('<br>');
+					}
+					
+				</script>
+			</select>
+			<h3>Go to main page</h3>
+				<li><a href="./index.html">Click Here</a></li>
+			<h3>Manual</h3>
+				<li><a href="./intr.html">Click Here</a></li>
+        </div>
+        
+        
+        
+        <!-- <div id="content">
+            <script>
+				var lv=getCookie("level");
+				build();
+			</script>
+		</div>	 -->
+
+		<div id="content">
+			<title>Home</title>
+			<h1>Announcement</h1>
+			歡迎各位，在開始前請先閱讀<a href="./intr.html">使用說明書</a>
+			，閱讀完畢後可以點選左側目錄欄中的level進行練習
+			<br><br>
+			<h2>2022.09.10(中午)</h2>
+			v2.0.0正式推出！<br><br>
+			這個版本的特色：
+			<li>便捷的選擇level功能，改變level不再跳轉頁面</li>
+			<li>使用Cookies，網頁更流暢！(如果你不希望使用Cookies可以繼續使用 <a href="./index_old.html">舊版</a> )</li>
+			<li>將所有功能整合到同一個網頁中(說明文件除外)</li>
+			<li>將大部分網址的絕對路徑改成相對路徑，方便未來搬遷</li>
+			
+			<br><br>
+			<h2>2022.09.10(凌晨)</h2>
+			最新版本v2.0.0正在開發，屆時將有煥然一新的界面，讓使用者更加便利！
+			<br><br>
+			<h2>2022.09.09</h2>
+			我們緬懷英國女王
+			<br>
+			Queen Elizabeth II <br>
+			<img src="https://www.royal.uk/sites/default/files/styles/featured_image_hero_2/public/images/news/website_announce.png?itok=epULNIow&anti-cache=21487d3cd6b45" width="1000pt" alt=""><br>
+			Picture Source:https://www.royal.uk
+			
+		</div>
+
+        
+
+
+		<div id="footer">
+			<br>
+			Author:W_X_Dai&nbsp;&nbsp;&nbsp;&nbsp;
+			Date:2022/09/10&nbsp;&nbsp;&nbsp;&nbsp;
+			v2.0.0 <br>
+			<a href="mailto:joshdai930908@gmail.com">聯繫我：joshdai930908@gmail.com</a>
+			<br>
+			<br>
+		</div>		
+	</body>
+	
 </html>
