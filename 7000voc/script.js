@@ -106,7 +106,7 @@ function order(){
 function build_order(){
     var from=getCookie("from");
     var to=getCookie("to");
-    var out="<title>LV"+getCookie("level")+"</title>, Range from "+from+" to "+to+"<h2>LV"+getCookie("level")+"</h2><h3>給定對應的中文，請輸入英文</h3><br>";
+    var out="<title>LV"+getCookie("level")+"</title><h2>LV"+getCookie("level")+", Range from "+from+" to "+to+"</h2><h3>給定對應的中文，請輸入英文</h3><br>";
     
 
     for(var i=from-1;i<to;++i)arr_order[i-from+1]=i;
