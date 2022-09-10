@@ -7,7 +7,7 @@ int main(){
     ofstream fchi("chi.txt");
     ifstream feng("LV5.tsv");
     ofstream fout("LV5.js",ios::trunc);
-
+    
     int n=0,id;
     string ch,en;
     string sans="var ansl=[",sq="var q=[";
