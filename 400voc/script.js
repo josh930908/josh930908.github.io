@@ -163,6 +163,7 @@ function select_level(){
     var i=document.getElementById("level").value;
     document.cookie='level='+i;
     var s,e;
+    if(i==0)s=1,e=400;
     if(i==1)s=1,e=50;
     if(i==2)s=51,e=100;
     if(i==3)s=101,e=150;
@@ -171,6 +172,10 @@ function select_level(){
     if(i==6)s=251,e=300;
     if(i==7)s=301,e=350;
     if(i==8)s=351,e=400;   
+    if(i==9){
+        order();
+        return;
+    }
     if(i==-1)location.reload();
 
     document.cookie='from='+s;

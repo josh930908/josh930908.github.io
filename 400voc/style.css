@@ -1,6 +1,6 @@
 #header {
     width: 100%;
-    background-color:#FFA500;
+    background-color: antiquewhite;
     font-size: 30pt;
     text-align: center;
 }
@@ -12,15 +12,12 @@
     height: auto ;
 }
 
-
-
-
 #text {
     width: 100vh;
 }
 
 #footer {
-    background-color:#FFA500;
+    background-color: antiquewhite;
     clear:both;
     text-align:center;
     width: 100%;
