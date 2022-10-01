@@ -45,10 +45,10 @@ function check_order(){
         var id="ans"+(i-from+1);
         var x=document.getElementById(id).value;
             
-        out+=(i-from+2);out+="."+q[arr_order[i-from+1]];out+="<br>";
+        out+=(i-from+1);out+="."+q[arr_order[i-from+1]];out+="<br>";
         out+='<input type="text" input id="'+id+'" value="'+x+'">';
-        if(correct[i-from+1])out+='<font color="green">correct</font><br>';
-        else out+='<font color="red">incorrect</font><br>the answer is:'+ansl[arr_order[i-from+1]];
+        if(correct[i-from+1])out+='<font color="green">答案正確！</font><br>';
+        else out+='<font color="red">答案錯誤...</font><br>正確答案是:'+ansl[arr_order[i-from+1]];
         out+="<br><br>";
     }
 //    out+='<button onClick="window.location.reload();">Back</button>';
@@ -125,32 +125,13 @@ function build_order(){
     }
     out+='<button name="submit" onClick="check_order()">Submit</button>&nbsp&nbsp';
     out+='<button name="submit" onClick="list()">List</button>&nbsp&nbsp';
+    
     content.innerHTML=out;
 }            
 
-    function build_old(){
-        var arr=[];
-        for(var i=0;i<n;++i)arr[i]=i;
-        arr.sort(function(){
-            return (0.5-Math.random());
-        });            
-        var out="<title>全範圍測驗模式</title><h2>LV1</h2><h3>給定對應的中文，請輸入英文</h3><br>";
-        var from=1;var to=n;
-        for(var i=0;i<10;++i){
-            var id="ans"+(i+1);
-            out+=(i+1);out+="."+q[arr[i]];out+="<br>";
-            out+='<input type="text" input id="'+id+'"><br><br><br>';
-        }
-        out+='<button name="submit" onClick="check()">Submit</button>&nbsp&nbsp';
-        out+='<button name="submit" onClick="order()">自訂</button>&nbsp&nbsp';
-        out+='<button name="submit" onClick="list()">List</button>&nbsp&nbsp';
-        //document.write(out);
-        document.write(out);
-    }
-
 function build(){
-    document.cookie='from='+1;
-    document.cookie='to='+n;
+//     document.cookie='from='+1;
+//     document.cookie='to='+n;
     var from=getCookie("from");
     var to=getCookie("to");
     for(var i=0;i<n;++i)arr[i]=i;
@@ -180,16 +161,24 @@ function getCookie(name) {
 function select_level(){
     var i=document.getElementById("level").value;
     document.cookie='level='+i;
-    if(i==1)q=q1,ansl=ansl1,n=n1;
-    if(i==2)q=q2,ansl=ansl2,n=n2;
-    if(i==3)q=q3,ansl=ansl3,n=n3;
-    if(i==4)q=q4,ansl=ansl4,n=n4;
-    if(i==5)q=q5,ansl=ansl5,n=n5;
-    if(i==6)q=q6,ansl=ansl6,n=n6;    
+    var s,e;
+    if(i==1)s=1,e=50;
+    if(i==2)s=51,e=100;
+    if(i==3)s=101,e=150;
+    if(i==4)s=151,e=200;
+    if(i==5)s=201,e=250;
+    if(i==6)s=251,e=300;
+    if(i==7)s=301,e=350;
+    if(i==8)s=351,e=400;   
     if(i==-1)location.reload();
-    
 
-    build();
+    q=question;
+    ansl=a;
+    n=n1;
+
+    document.cookie='from='+s;
+    document.cookie='to='+e;
+    imple();
 }
 
 function record(){

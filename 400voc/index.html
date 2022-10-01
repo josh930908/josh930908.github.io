@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+        <script type="text/javascript" src="./file.js"></script>
+        <script type="text/javascript" src="./script.js"></script>
+        <link rel=stylesheet type="text/css" href="style.css">
+
+	</head>
+	
+	<body>
+
+        <div id="header">國小單字王練習網</div>
+        <div id="menu">
+			<h3>Please select the level of Vocabularies.</h3>
+            <select name="level" id="level" onchange="select_level()">
+				<option value="-1"> -- </option>
+				<option value="1"> 1~50 </option>
+				<option value="2"> 51~100 </option>
+				<option value="3"> 101~150 </option>
+				<option value="4"> 151~200 </option>
+				<option value="5"> 201~250 </option>
+				<option value="6"> 251~300 </option>
+				<option value="7"> 301~350 </option>
+				<option value="8"> 351~400 </option>
+
+			</select>
+			<h3>Go to main page</h3>
+				<li><a href="./index.html">Click Here</a></li>
+			<h3>Manual</h3>
+				<li><a href="./intr.html">Click Here</a></li>
+        </div>
+        
+        
+        
+        <!-- <div id="content">
+            <script>
+				var lv=getCookie("level");
+				build();
+			</script>
+		</div>	 -->
+
+		<div id="content">
+			<title>Home</title>	
+			<h1>使用說明書</h1>
+			歡迎使用國小單字王練習網站，本網站提供優質的單字測驗！
+			<br>
+			<h2>特色：</h2>
+				<li>可以練習中翻英</li>
+				<li>可以自己訂定練習的範圍</li>
+				<li>可以看到單字表的內容</li>
+				<li>想要什麼功能、外觀，通通可以點餐～</li>
+			<br>
+			<h2>使用說明：</h2>
+			首先，點擊最下面的「開始練習」按鈕，選擇你要練習的範圍
+			<button name="start" onclick="order()">開始練習！</button>
+		</div>
+
+        
+
+
+		<div id="footer">
+			<br>
+			Author:W_X_Dai&nbsp;&nbsp;&nbsp;&nbsp;
+			Date:2022/09/3	0&nbsp;&nbsp;&nbsp;&nbsp;
+			v2.0.0 <br>
+			<a href="mailto:joshdai930908@gmail.com">聯繫我：joshdai930908@gmail.com</a>
+			<br>
+			<br>
+		</div>		
+	</body>
+	
+</html>

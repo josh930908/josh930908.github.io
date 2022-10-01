@@ -1,0 +1,27 @@
+#header {
+    width: 100%;
+    background-color:#FFA500;
+    font-size: 30pt;
+    text-align: center;
+}
+
+#menu {
+    width: 50vh;
+    float: left;
+}
+
+#content {
+    font-size: 18pt;
+    float:left;
+}
+
+#text {
+    width: 100vh;
+}
+
+#footer {
+    background-color:#FFA500;
+    clear:both;
+    text-align:center;
+    width: 100%;
+}
