@@ -45,25 +45,21 @@ function check_order(){
         var id="ans"+(i-from+1);
         var x=document.getElementById(id).value;
             
-        out+=(i-from+1);out+="."+q[arr_order[i-from+1]];out+="<br>";
+        out+=(i-from+2);out+="."+q[arr_order[i-from+1]];out+="<br>";
         out+='<input type="text" input id="'+id+'" value="'+x+'">';
         if(correct[i-from+1])out+='<font color="green">答案正確！</font><br>';
         else out+='<font color="red">答案錯誤...</font><br>正確答案是:'+ansl[arr_order[i-from+1]];
         out+="<br><br>";
     }
 //    out+='<button onClick="window.location.reload();">Back</button>';
-    out+='<button onClick="imple();">Back</button>';
-    out+='<button onClick="build();">Back ot normal</button>';
+    out+='<button onClick="imple();">返回</button>';
         
 //	document.write(out2);
     content.innerHTML=out;
 }
 
 function imple(){
-    var from=getCookie("from");
-    var to=getCookie("to");
-    if(from==1 && to==n)build();
-    else build_order();
+    build_order();
 }
 
 function list(){
@@ -91,24 +87,28 @@ function order(){
         
     if(start<1 || end>n || start>end){
         alert("輸入範圍錯誤");
-        build();
+        
         return;
     }
     if(end-start+1<10){
         alert("單字數量不可少於10");
-        build();
+        
         return;
     }
     document.cookie='from='+start;
     document.cookie='to='+end;
-    build_order();
+    imple();
 
 }
 
 function build_order(){
+    q=question;ansl=a;n=n1;
     var from=getCookie("from");
     var to=getCookie("to");
-    var out="<title>LV"+getCookie("level")+"</title><h2>LV"+getCookie("level")+", Range from "+from+" to "+to+"</h2><h3>給定對應的中文，請輸入英文</h3><br>";
+    if(getCookie("level")==-1)
+        var out="<title>自訂範圍</title><h2>自訂範圍, 從 "+from+" 到 "+to+"</h2><h3>給定對應的中文，請輸入英文</h3><br>";
+    else
+        var out="<title>LV"+getCookie("level")+"</title><h2>LV"+getCookie("level")+", 從 "+from+" 到 "+to+"</h2><h3>給定對應的中文，請輸入英文</h3><br>";
     
 
     for(var i=from-1;i<to;++i)arr_order[i-from+1]=i;
@@ -121,12 +121,13 @@ function build_order(){
     for(var i=from-1;i<from-1+10;++i){
         var id="ans"+(i-from+1);   
         out+=(i-from+2);out+="."+q[arr_order[i-from+1]];out+="<br>";
-        out+='<input type="text" input id="'+id+'"><br><br><br>';
+        out+='<input type="text" input id="'+id+'" style:"height=10px"><br><br><br>';
     }
-    out+='<button name="submit" onClick="check_order()">Submit</button>&nbsp&nbsp';
-    out+='<button name="submit" onClick="list()">List</button>&nbsp&nbsp';
+    out+='<button name="submit" onClick="check_order()">提交答案！</button>&nbsp&nbsp';
+    out+='<button name="submit" onClick="list()">顯示單字表</button>&nbsp&nbsp';
     
     content.innerHTML=out;
+    document.cookie='level=-1';
 }            
 
 function build(){
@@ -171,10 +172,6 @@ function select_level(){
     if(i==7)s=301,e=350;
     if(i==8)s=351,e=400;   
     if(i==-1)location.reload();
-
-    q=question;
-    ansl=a;
-    n=n1;
 
     document.cookie='from='+s;
     document.cookie='to='+e;

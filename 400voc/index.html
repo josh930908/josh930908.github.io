@@ -12,7 +12,7 @@
 
         <div id="header">國小單字王練習網</div>
         <div id="menu">
-			<h3>Please select the level of Vocabularies.</h3>
+			<h3>請選則你想要練習的單字範圍</h3>
             <select name="level" id="level" onchange="select_level()">
 				<option value="-1"> -- </option>
 				<option value="1"> 1~50 </option>
@@ -25,10 +25,11 @@
 				<option value="8"> 351~400 </option>
 
 			</select>
-			<h3>Go to main page</h3>
-				<li><a href="./index.html">Click Here</a></li>
-			<h3>Manual</h3>
-				<li><a href="./intr.html">Click Here</a></li>
+			<br><br><br>
+			<button onclick="order()">自訂練習範圍</button>
+
+			<h3>回首頁</h3>
+				<li><a href=".">點我回首頁</a></li>
         </div>
         
         
@@ -42,18 +43,20 @@
 
 		<div id="content">
 			<title>Home</title>	
-			<h1>使用說明書</h1>
-			歡迎使用國小單字王練習網站，本網站提供優質的單字測驗！
+			<h1>Welcome</h1>
+			歡迎使用國小單字王練習網站，本網站提供優質的單字測驗系統！
 			<br>
-			<h2>特色：</h2>
+			<h2>使用說明：</h2>
+			請先在左側選擇你要練習的單字範圍（如果是手機或是平板會在最上方），系統會自動從該範圍中挑出10個單字給你練習，
+			輸入完答案之後，可以點擊最下方的「送出答案」按鈕，系統會自動判斷你的答案是否正確。
+			<b>在輸入時請使用半形，並且不能有多餘的空格，大小寫須完全符合，否則可能被判定成錯誤</b>
+			<h2>網站特色：</h2>
 				<li>可以練習中翻英</li>
 				<li>可以自己訂定練習的範圍</li>
 				<li>可以看到單字表的內容</li>
 				<li>想要什麼功能、外觀，通通可以點餐～</li>
 			<br>
-			<h2>使用說明：</h2>
-			首先，點擊最下面的「開始練習」按鈕，選擇你要練習的範圍
-			<button name="start" onclick="order()">開始練習！</button>
+			
 		</div>
 
         
