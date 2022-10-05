@@ -29,6 +29,7 @@ function check(){
     //document.write(out2);
     content.innerHTML=out;
 }
+
 function check_order(){
     var from=getCookie("from");
     var to=getCookie("to");
@@ -163,7 +164,7 @@ function select_level(){
     var i=document.getElementById("level").value;
     document.cookie='level='+i;
     var s,e;
-    if(i==0)s=1,e=90;
+    if(i==0)s=1,e=92;
     if(i==1)s=1,e=50;
     if(i==2)s=51,e=100;
     if(i==-1)location.reload();
@@ -178,4 +179,64 @@ function record(){
 
     var x=document.getElementById(rec).value;
     alert(x);
+}
+
+function all_init(){
+    q=question;ansl=a;n=n1;
+    arr_order.sort(function(){
+        return (0.5-Math.random());
+    });             
+    var out='<title>挑戰模式</title>';
+    out+='<h2>挑戰模式！單字無重複</h2>';
+    out+='<h3>說明：</h3>';
+    out+='本次挑戰共分有'+n+'題，分成10次考，每次至多10題。測驗完畢後系統會告知你尚不熟的單字，可以多加練習！<br><br>';
+    out+='<button name="submit" onclick="build_order_all(2)">我知道了！</button>';
+    content.innerHTML=out;
+}
+
+function build_order_all(_id){
+    q=question;ansl=a;n=n1;
+
+    
+    var out;
+    var from=_id,to=_id+10;
+    for(var i=_id;i<=id_+10;++i){
+
+        var id="ans"+_id;   
+        out+=_id;out+="."+q[arr_order[_id]];out+="<br>";
+        out+='<input type="text" input id="'+id+'" style:"height=10px"><br><br><br>';
+    }
+    out+='<button name="submit" onClick="check_order()">提交答案！</button>&nbsp&nbsp';
+    out+='<button name="submit" onClick="all_init(_id+10)">下一階段</button>'
+    out+='<button name="submit" onClick="list()">顯示單字表</button>&nbsp&nbsp';
+    
+    content.innerHTML=out;
+    document.cookie='level=-1';
+}  
+
+function check_all(_id){
+    var score=0,correct=[];
+    for(var i=_id;i<=_id+10;++i){
+        var id="ans"+_id;
+        var x=document.getElementById(id).value;
+        if(ansl[arr_order[_id]]==x)++score,correct[_id]=1;
+        else correct[_id]=0;
+    }
+    var out="<title>LV1</title><h2>LV1</h2><h3>給定對應的中文，請輸入英文</h3>score:";
+    out+=score*10+"/100<br>";
+    for(var i=_id;i<=_id+10;++i){
+        var id="ans"+_id;
+        var x=document.getElementById(id).value;
+            
+        out+=_id;out+="."+q[arr_order[_id]];out+="<br>";
+        out+='<input type="text" input id="'+id+'" value="'+x+'">';
+        if(correct[_id])out+='<font color="green">答案正確！</font><br>';
+        else out+='<font color="red">答案錯誤...</font><br>正確答案是:'+ansl[arr_order[_id]];
+        out+="<br><br>";
+    }
+//    out+='<button onClick="window.location.reload();">Back</button>';
+    out+='<button onClick="imple();">返回</button>';
+        
+//	document.write(out2);
+    content.innerHTML=out;
 }

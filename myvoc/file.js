@@ -1,4 +1,4 @@
-var n1=90;
+var n1=92;
 
 var a=[
     "rotten",
@@ -14,7 +14,7 @@ var a=[
     "ton",
     "frost",
     "constitute",
-    "acceletate",
+    "accelerate",
     "innovation",
     "innovative",
     "electricity",
@@ -66,10 +66,12 @@ var a=[
     "invade",
     "deadly",
     "antibody",
+    "antibiotic",
     "surrender",
     "troop",
     "infect",
     "infection",
+    "infectious",
     "symptom",
     "collapse",
     "combat",
