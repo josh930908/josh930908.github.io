@@ -165,7 +165,7 @@ function select_level(){
     document.cookie='level='+i;
     var s,e;
     if(i==0)s=1,e=92;
-    if(i==1)s=1,e=50;
+    if(i==1)s=93,e=209;
     if(i==2)s=51,e=100;
     if(i==-1)location.reload();
 
