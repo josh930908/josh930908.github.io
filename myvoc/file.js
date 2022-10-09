@@ -42,7 +42,7 @@ var a=[
     "relatively",
     "relative",
     "raw",
-    "investmant",
+    "investment",
     "invest",
     "grief",
     "ancestor",
