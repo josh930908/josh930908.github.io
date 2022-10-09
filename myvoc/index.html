@@ -11,22 +11,24 @@
 	
 	<body>
 
-        <div id="header">私房單字練習</div>
+        <div id="header">Josh的私房單字庫</div>
         <div id="menu">
 			<h3>請選則你想要練習的單字範圍</h3>
             <select name="level" id="level" onchange="select_level()">
 				<option value="-1"> -- </option>
-				<option value="0"> 全部 </option>
-				<option value="1">模考單字</option>
+				<option value="0"> 課本U1~U2單字+片語 </option>
+				<option value="1"> 模考題本單字 </option>
+				<option value="2"> 全範圍混合練習 </option>
 				<!--
 				<option value="1"> B5L1 </option>
 				<option value="2"> B5L2 </option>
 				<option value="3"> B5L1~L2 </option>
 				-->
 			</select><br><br><br>
-			<!--<h3>你也可以選擇全範圍模式</h3>
-			<button name="all" onclick="all_init(1)">全範圍模式</button>-->
-			
+			<h3>你也可以選擇全範圍挑戰</h3>
+			<button name="all" onclick="all_init(1)">開始挑戰</button>
+			<h5><font color="Red">此功能已進入測試階段</font></h5>
+
 			<h3>回首頁</h3>	
 				<li><a href="./index.html">點我回首頁</a></li> 
         </div>
