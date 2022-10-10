@@ -186,7 +186,7 @@ var all_wrong=[],all_n;
 function all_init(){
     all_n=0;
     q=question;ansl=a;n=n1;
-    for(var i=1;i<=n;++i)arr_order[i-1]=i,all_wrong[i]=0;
+    for(var i=0;i<n;++i)arr_order[i]=i,all_wrong[i]=0;
     arr_order.sort(function(){
         return (0.5-Math.random());
     });             
