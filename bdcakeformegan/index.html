@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+  <script src="background.js"></script>
+  <canvas id="firework"></canvas>
+
+<!-- partial:index.partial.html -->
+<div class="wrapper">
+  <div class="greeting">
+    Dear Megan:<br>
+    Happy Birthday!<br>
+  </div>
+  <div class="plate">
+    <div class="cake-wrap">
+      <div class="cake-topping">
+        <div class="topping-top">
+          <div class="candle-container">
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="candle-wrap">
+              <div class="flame-wrap"></div>
+              <div class="candle-base">
+                <div class="candle-top"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="topping-front">
+          <div class="top-layer"></div>
+          <div class="bottom-layer"></div>
+        </div>
+      </div>
+      <div class="cake-base">
+        <div class="base-front"></div>
+        <div class="base-top"></div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+  
+<svg class="svg">
+  <clipPath id="my-clip-path" clipPathUnits="objectBoundingBox"><path d="M0,0 V0.481 s0.021,0.37,0.078,0.404 s0.035,-0.296,0.102,-0.27 s0.007,0.363,0.096,0.354 s0.028,-0.466,0.1,-0.487 S0.406,0.999,0.457,0.999 s0.03,-0.502,0.075,-0.518 s0.041,0.488,0.081,0.274 c0.007,-0.038,0.021,-0.187,0.044,-0.215 c0.014,-0.017,0.038,0.401,0.075,0.392 s0.023,-0.28,0.074,-0.392 c0.022,-0.04,0.072,0.359,0.1,0.344 c0.057,-0.029,0.094,-0.405,0.094,-0.405 V-0.001"></path></clipPath>
+  <clipPath id="my-flame-path" clipPathUnits="objectBoundingBox"><path d="M0.501,0 s0.188,0.101,0.295,0.238 s0.123,0.15,0.169,0.286 S1,0.74,0.928,0.838 S0.711,1,0.501,1 S0.216,0.937,0.09,0.838 s-0.083,-0.149,0,-0.29 s0.23,-0.139,0.333,-0.276 S0.501,0,0.501,0"></path></clipPath>
+  <clipPath id="my-star-path" clipPathUnits="objectBoundingBox"><path d="M0.5,0.846 l-0.309,0.154,0.044,-0.357 L0,0.382 l0.336,-0.067 L0.5,0 l0.164,0.315,0.336,0.067,-0.235,0.261,0.044,0.357"></path></clipPath>
+</svg>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.2/gsap.min.js'></script><script  src="./script.js"></script>
+
+
+<!-- bd card -->
+
+<div id="card">
+
+  <div id="card-inside">
+    <div class="wrap">
+      <p>Dear Megan,</p>
+      <p>生日快樂！恭喜你，正式進入18歲，這個充滿夢想的階段！
+        <br><br>
+        你是我的老隊友了<s>(雖然有時候有點拖)</s>，我們的諸多合作整體還是挺不錯的。
+        也許在當下很疲憊，結束後卻都是美好的回憶。
+        我的個性相當頑固，而且非常直白，
+        而你總能在關鍵時刻拉我一把，這兩年，多謝你了。
+        <br>
+        你給我的印象一直都是「這是一個很執著的人」。能夠為了單字考高分背到兩點，
+        能夠修改一個圖形修改幾十分鐘。幾次你發揮失常相當沮喪，
+        我都覺得「都那麼努力了，就放下個一次也好」
+        <br>
+        上週你說了，要開始「努力」準備學測。
+        只要有一個明確的目標可追逐，即使目標不同，也能成為一路上共同闖關的夥伴。
+        加油吧！前途掌握在當下，命運掌握在手中。
+        <br>
+        版面使然，裝不下太多文字。言盡於此，意猶未盡。
+      <p class="signed" style="text-align: right;">Josh</p>
+      
+    </div>
+  </div>
+
+  <div id="card-front">
+    <div class="wrap">
+      <br><br><br><br><br><br><br>
+      <h1> </h1>
+      <h1>Happy Birthday!</h1>
+    </div>
+    <button id="open">&gt;</button>
+    <button id="close">&lt;</button>
+  </div>
+
+  <script>  (function() {
+    function $(id) {
+      return document.getElementById(id);
+    }
+  
+    var card = $('card'),
+        openB = $('open'),
+        closeB = $('close'),
+        timer = null;
+    console.log('wat', card);
+    openB.addEventListener('click', function () {
+      card.setAttribute('class', 'open-half');
+      if (timer) clearTimeout(timer);
+      timer = setTimeout(function () {
+        card.setAttribute('class', 'open-fully');
+        timer = null;
+      }, 1000);
+    });
+  
+    closeB.addEventListener('click', function () {
+      card.setAttribute('class', 'close-half');
+      if (timer) clearTimerout(timer);
+      timer = setTimeout(function () {
+        card.setAttribute('class', '');
+        timer = null;
+      }, 1000);
+    });
+  
+  }());</script>
+</div>
+
+
+</body>
+</html>
