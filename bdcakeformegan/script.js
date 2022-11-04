@@ -11,7 +11,16 @@ $(document).ready(function(){
     $(".wrapper").hide();
     $("#card").show();
   });
+  var audio; 
+  $("#card").click(function(){
+    if(!audio){
+      audio = document.createElement("audio"); 
+      audio.src = "music.mp3";
+      audio.play();      
+    }
+  });
 });
+
 
 
 
