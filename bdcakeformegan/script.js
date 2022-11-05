@@ -1,6 +1,7 @@
 //jquery
 $(document).ready(function(){
   $("#card").hide();
+  $(".envelope").hide();
   // $("cake-base").click(function(){
   //   $(".").fadeToggle(); 
   // });
@@ -17,7 +18,19 @@ $(document).ready(function(){
       audio = document.createElement("audio"); 
       audio.src = "music.mp3";
       audio.play();      
+    }else{
+      $("#card").fadeOut();
+    //  setTimeout(function(){$(".envelope").fadeIn}, 1000);
+      $(".envelope").show();
     }
+  });
+  $(".long_mess").hide();
+  // $("cake-base").click(function(){
+  //   $(".").fadeToggle(); 
+  // });
+  $(".paper").click(function(){
+    $(".envelope").fadeOut();
+    setTimeout(function(){$(".long_mess").fadeIn("slow");}, 700);
   });
 });
 
@@ -389,8 +402,7 @@ timeline.to('.star', {
     }
   }
   
-  //the js of the card
 
-  
+
   
   
