@@ -20,7 +20,7 @@ $(document).ready(function(){
       audio.src = "music.mp3";
       audio.play();      
       audio.addEventListener('ended', function() {
-        audio.currentTime = 0;
+        audio.currentTime = 0; 
         audio.play();
       });
     }else{
@@ -30,16 +30,14 @@ $(document).ready(function(){
     }
   });
   
-  $("#long_mess").hide();
-  // $("cake-base").click(function(){
-  //   $(".").fadeToggle(); 
-  // });
+  $(".long_mess").hide();
+
   $(".paper").click(function(){
     $(".envelope").fadeOut();
-    setTimeout(function(){$("#long_mess").fadeIn("slow");}, 700);
+    setTimeout(function(){$(".long_mess").fadeIn("slow");}, 700);
   });
 
-  
+
 });
 
 
