@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encrypt and Decrypt a String with CryptoJS</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
+<body>
+    <h1>Encrypt and Decrypt a String using AES</h1>
+    <input type="text" id="inputString" placeholder="Enter a string">
+    <button onclick="encryptString()">Encrypt</button>
+    <p id="encryptedString"></p>
+
+    <input type="text" id="encryptedInput" placeholder="Enter encrypted string">
+    <button onclick="decryptString()">Decrypt</button>
+    <p id="decryptedString"></p>
+
+    <script>
+        var key = '15362748'; // 这是你的加密密钥
+
+        function encryptString() {
+            // 获取输入的字符串
+            var inputString = document.getElementById('inputString').value;
+            // 使用AES加密
+            var encrypted = CryptoJS.AES.encrypt(inputString, key).toString();
+            // 显示加密后的字符串
+            document.getElementById('encryptedString').innerText = "Encrypted String: " + encrypted;
+            // 在解密输入框中预填加密后的字符串
+            document.getElementById('encryptedInput').value = encrypted;
+        }
+
+        function decryptString() {
+            // 获取加密后的字符串
+            var encryptedString = document.getElementById('encryptedInput').value;
+            // 使用AES解密
+            var decrypted = CryptoJS.AES.decrypt(encryptedString, key);
+            // 将解密后的内容转换为字符串
+            var decryptedString = decrypted.toString(CryptoJS.enc.Utf8);
+            // 显示解密后的字符串
+            document.getElementById('decryptedString').innerText = "Decrypted String: " + decryptedString;
+        }
+    </script>
+</body>
+</html>

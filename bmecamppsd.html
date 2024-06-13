@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>輸入密碼</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    .password-input {
+      display: inline-block;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #passwordInput {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #cccccc;
+      border-radius: 3px;
+    }
+
+    #submitButton {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: #ffffff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="password-input">
+      <input type="password" id="passwordInput" placeholder="請輸入密碼">
+      <button id="submitButton">確認</button>
+    </div>
+  </div>
+
+  <script>
+    const passwordInput = document.getElementById('passwordInput');
+    const submitButton = document.getElementById('submitButton');
+    const encryptedUrl = 'U2FsdGVkX1+jpyD5uhoOMn/PUYu5Enmrc5+Ow/WGlib1706lHllnCr5nibuaCQynip0QscSDGKJJV//SgUtyebm4pnW1rLmPZTE+SO3HHaYL6maxMExUBCl0F0OFalII';
+
+    submitButton.addEventListener('click', () => {
+      const enteredPassword = passwordInput.value;
+      try {
+        // 使用輸入的密碼作為金鑰解密目標網址
+        const bytes = CryptoJS.AES.decrypt(encryptedUrl, enteredPassword);
+        const targetUrl = bytes.toString(CryptoJS.enc.Utf8);
+
+        if (targetUrl) {
+          // 導向解密後的目標網址
+          window.location.href = targetUrl;
+        } else {
+          alert('密碼錯誤，請重試。');
+        }
+      } catch (e) {
+        alert('密碼錯誤，請重試');
+      }
+    });
+  </script>
+</body>
+</html>
