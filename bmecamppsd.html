@@ -59,11 +59,15 @@
       margin: 0;
     }
   </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 
 </head>
 <body>
   <h2>請問以下這段程式碼會輸出什麼呢？</h2>
-  <img src="./bme.png" alt="" width="500px">
+  <!-- <img src="./bme.png" alt="" width="500px"> -->
+  <script src="https://pastebin.com/embed_js/48ZB1qbw"></script>
+
+
   <div class="container">
     <div class="password-input">
       <input type="password" id="passwordInput" placeholder="請輸入密碼">
@@ -82,7 +86,7 @@
         // 使用輸入的密碼作為金鑰解密目標網址
         const bytes = CryptoJS.AES.decrypt(encryptedUrl, enteredPassword);
         const targetUrl = bytes.toString(CryptoJS.enc.Utf8);
-
+        
         if (targetUrl) {
           // 導向解密後的目標網址
           window.location.href = targetUrl;
