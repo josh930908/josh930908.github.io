@@ -1,0 +1,135 @@
+/* 通用樣式 */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  background-color: #f9f9f9;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1, h2 {
+  color: #0078d7;
+  text-align: center;
+}
+
+/* 頁首樣式 */
+header {
+  background-color: #0078d7;
+  color: white;
+  padding: 20px 0;
+}
+
+header h1 {
+  margin: 0;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+  margin-top: 10px;
+}
+
+nav ul li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+/* 主內容樣式 */
+main {
+  padding: 20px 0;
+}
+
+.search-container {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+  justify-content: center;
+}
+
+#search-box {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+}
+
+#tag-selector {
+  padding: 10px;
+  font-size: 16px;
+  width: 150px;
+}
+
+#search-btn {
+  background-color: #0078d7;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+#search-btn:hover {
+  background-color: #005fa3;
+}
+
+.tag-cloud {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.tag {
+  background-color: #e0e0e0;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.tag:hover {
+  background-color: #ccc;
+}
+
+.question-card {
+  background: white;
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+.question-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.question-title {
+  font-weight: bold;
+}
+
+.question-tags .tag {
+  background-color: #0078d7;
+  color: white;
+  border-radius: 3px;
+  padding: 2px 5px;
+  margin-right: 5px;
+}
+
+
+
+/* 頁腳樣式 */
+footer {
+  background-color: #f1f1f1;
+  text-align: center;
+  padding: 10px 0;
+  margin-top: 20px;
+}

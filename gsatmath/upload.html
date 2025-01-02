@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>上傳題目 - 學測題庫</title>
+  <link rel="stylesheet" href="css/upload.css">
+</head>
+<body>
+  <!-- 頁首 -->
+  <header>
+    <div class="container">
+      <h1>上傳題目</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">首頁</a></li>
+          <li><a href="#upload">上傳題目</a></li>
+          <li><a href="#search">搜尋題目</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 主內容 -->
+  <main class="container">
+    <section id="upload">
+      <h2>上傳新題目</h2>
+      <form id="upload-form">
+        <!-- 題目內容 -->
+        <div class="form-group">
+          <label for="question-content">題目內容 (支援數學公式)</label>
+          <textarea id="question-content" name="question-content" rows="5" placeholder="輸入題目內容，公式使用 LaTeX 語法" required></textarea>
+        </div>
+
+        <!-- 題目預覽 -->
+        <div class="form-group">
+          <label for="preview-question">題目預覽</label>
+          <div id="preview-question" class="math-preview"></div>
+        </div>
+
+        <!-- 解答內容 -->
+        <div class="form-group">
+          <label for="question-answer">解答內容 (支援數學公式)</label>
+          <textarea id="question-answer" name="question-answer" rows="5" placeholder="輸入解答內容，公式使用 LaTeX 語法" required></textarea>
+        </div>
+
+        <!-- 解答預覽 -->
+        <div class="form-group">
+          <label for="preview-answer">解答預覽</label>
+          <div id="preview-answer" class="math-preview"></div>
+        </div>
+
+        <!-- 標籤 -->
+        <div class="form-group">
+          <label for="question-tags">標籤</label>
+          <input type="text" id="question-tags" name="question-tags" placeholder="輸入標籤（用逗號分隔，如：三角, 極值）" required>
+        </div>
+
+        <!-- 來源 -->
+        <div class="form-group">
+          <label for="question-source">來源</label>
+          <input type="text" id="question-source" name="question-source" placeholder="輸入題目來源（如：108 學測數學）" required>
+        </div>
+
+        <!-- 提交按鈕 -->
+        <button type="submit" id="submit-button">提交題目</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- 頁腳 -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 學測題庫. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- 引入 MathJax -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+      },
+      startup: {
+        typeset: false,
+      },
+    };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+  <script type="module" src="js/upload.js"></script>
+</body>
+</html>

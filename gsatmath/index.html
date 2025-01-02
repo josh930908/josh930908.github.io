@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>學測題庫</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <script>
+    // 配置 MathJax
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+      },
+      startup: {
+        typeset: false, // 禁用自動渲染，改為手動觸發
+      },
+    };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+</head>
+<body>
+  <!-- 頁首 -->
+  <header>
+    <div class="container">
+      <h1>學測題庫</h1>
+      <nav>
+        <ul>
+          <li><a href="#search">搜尋題目</a></li>
+          <li><a href="#tags">標籤管理</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 主內容 -->
+  <main class="container">
+    <!-- 搜尋區 -->
+    <section id="search">
+      <h2>搜尋題目</h2>
+      <div class="search-container">
+        <input type="text" id="search-box" placeholder="輸入關鍵字或標籤">
+        <button id="search-btn">搜尋</button>
+      </div>
+    </section>
+
+    <!-- 熱門標籤 -->
+    <section id="popular-tags">
+      <h2>熱門標籤</h2>
+      <div class="tag-cloud">
+        <button class="tag" data-tag="三角">三角</button>
+        <button class="tag" data-tag="極值">極值</button>
+        <button class="tag" data-tag="向量">向量</button>
+        <button class="tag" data-tag="排列組合">排列組合</button>
+        <button class="tag" data-tag="微積分">微積分</button>
+      </div>
+    </section>
+
+    <!-- 搜尋結果 -->
+    <section id="results">
+      <h2>搜尋結果</h2>
+      <div id="question-list">
+        <!-- 搜尋結果將動態插入到此 -->
+      </div>
+    </section>
+  </main>
+
+  <!-- 頁腳 -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 學測題庫. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>
