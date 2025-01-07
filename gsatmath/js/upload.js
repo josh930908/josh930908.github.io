@@ -41,12 +41,13 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // 將題目存入 Firestore 的函數
-const addQuestion = async (questionContent, answerContent, tags, source) => {
+const addQuestion = async (questionContent, answerContent, type, tags, source) => {
   try {
     const questionId = `question-${Date.now()}`; // 使用時間戳作為唯一 ID
     const questionData = {
       content: questionContent,
       answer: answerContent,
+      type: type,
       tags,
       source,
       createdAt: new Date().toISOString(),
@@ -72,18 +73,18 @@ document.getElementById("upload-form").addEventListener("submit", async (event) 
     const answerContent = document.getElementById("question-answer").value.trim();
     const tags = document.getElementById("question-tags").value.trim().split(",").map(tag => tag.trim());
     const source = document.getElementById("question-source").value.trim();
+    const type = document.getElementById("question-type").value.trim();
 
-    if (!questionContent || !answerContent || !tags || !source) {
+    if (!questionContent || !answerContent || !tags || !source || !type) {
       alert("請填寫所有欄位！");
       return;
     }
 
     // 調用存儲函數
-    await addQuestion(questionContent, answerContent, tags, source);
+    await addQuestion(questionContent, answerContent, type, tags, source);
 
     // 清空表單
     document.getElementById("upload-form").reset();
-    alert("表單已清空！");
   } catch (error) {
     console.error("提交過程中出現錯誤：", error);
     alert("提交過程中出現錯誤，請檢查日誌！");

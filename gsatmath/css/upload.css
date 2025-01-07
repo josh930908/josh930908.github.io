@@ -113,3 +113,31 @@ footer {
   padding: 10px 0;
   background: #f1f1f1;
 }
+
+/* 樣式化 <select> 元素 */
+select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: white;
+  color: #333;
+  appearance: none; /* 隱藏瀏覽器默認箭頭樣式 */
+  -webkit-appearance: none; /* 適配 Safari 瀏覽器 */
+  -moz-appearance: none; /* 適配 Firefox 瀏覽器 */
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath fill='%23333' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+}
+
+select:focus {
+  border-color: #0078d7;
+  outline: none;
+}
+
+select:hover {
+  cursor: pointer;
+}
